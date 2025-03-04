@@ -8,7 +8,7 @@ const App = () => (
     <Container>
       <Routes>
         {/* Init */}
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
 
         {/* Home */}
         <Route path="/home" element={<Home />} />
