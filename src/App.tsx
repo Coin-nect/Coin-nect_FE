@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import { Home, Budget, Stats, MyPage } from '@pages/index';
 import Login from '@pages/Login';
+import Loading from '@pages/Loading';
 
 const App = () => (
   <Router>
@@ -9,6 +10,7 @@ const App = () => (
       <Routes>
         {/* Init */}
         <Route path="/" element={<Login />} />
+        <Route path="/loading" element={<Loading />} />
 
         {/* Home */}
         <Route path="/home" element={<Home />} />
