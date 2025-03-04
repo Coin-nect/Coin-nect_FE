@@ -1,11 +1,15 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import { Home, Budget, Stats, MyPage } from '@pages/index';
+import Login from '@pages/Login';
 
 const App = () => (
   <Router>
     <Container>
       <Routes>
+        {/* Init */}
+        <Route path="/login" element={<Login />} />
+
         {/* Home */}
         <Route path="/home" element={<Home />} />
 

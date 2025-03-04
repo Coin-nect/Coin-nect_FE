@@ -5,7 +5,7 @@ import { COLORS, COMMON_COLORS, FONT_COLORS } from '@constants/colors';
 interface ButtonProps {
   onClick?: () => void;
   buttonText: string;
-  type?: 'default' | 'primary';
+  type?: 'default' | 'primary' | 'login';
   className?: string;
   isDisabled?: boolean;
   style?: React.CSSProperties;
@@ -35,7 +35,7 @@ const Button = ({
       disabled={isDisabled}
       style={style}
     >
-      <ButtonText>{buttonText}</ButtonText>
+      {buttonText}
     </ButtonContainer>
   );
 };
@@ -57,8 +57,14 @@ const ButtonContainer = styled.button`
     background-color: ${COLORS.gray};
     color: ${FONT_COLORS.white};
   }
-`;
 
-const ButtonText = styled.div`
-  font-size: 0.8rem;
+  &.login {
+    background-color: ${COLORS.gray};
+    color: ${FONT_COLORS.dark_blue};
+    font-size: 1rem;
+    font-weight: 500;
+    width: 20rem;
+    height: 3.44rem;
+    border-radius: 0.75rem;
+  }
 `;
