@@ -1,5 +1,7 @@
 // Init
 export { default as Login } from './Login';
+export { default as Loading } from './Loading';
+export { default as NotFound } from './NotFound';
 
 // Home
 export { default as Home } from './Home/Home';

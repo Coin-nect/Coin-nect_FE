@@ -1,8 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import { Home, Budget, Stats, MyPage } from '@pages/index';
-import Login from '@pages/Login';
-import Loading from '@pages/Loading';
+import {
+  Login,
+  Loading,
+  NotFound,
+  Home,
+  Budget,
+  Stats,
+  MyPage,
+} from '@pages/index';
 
 const App = () => (
   <Router>
@@ -11,6 +17,7 @@ const App = () => (
         {/* Init */}
         <Route path="/" element={<Login />} />
         <Route path="/loading" element={<Loading />} />
+        <Route path="/*" element={<NotFound />} />
 
         {/* Home */}
         <Route path="/home" element={<Home />} />
