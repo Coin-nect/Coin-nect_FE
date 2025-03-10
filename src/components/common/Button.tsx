@@ -5,7 +5,7 @@ import { COLORS, COMMON_COLORS, FONT_COLORS } from '@constants/colors';
 interface ButtonProps {
   onClick?: () => void;
   buttonText: string;
-  type?: 'default' | 'primary' | 'login';
+  type?: 'default' | 'primary' | 'login' | 'modalBtn';
   className?: string;
   isDisabled?: boolean;
   style?: React.CSSProperties;
@@ -71,5 +71,14 @@ const ButtonContainer = styled.button<{ bgColor?: string }>`
     width: 20rem;
     height: 3.44rem;
     border-radius: 0.75rem;
+  }
+
+  &.modalBtn {
+    width: 100%;
+    background-color: ${({ bgColor }) => bgColor || COLORS.gray};
+    color: ${FONT_COLORS.white};
+    border-radius: 0.5rem;
+    padding: 0.8rem 0;
+    font-size: 0.8rem;
   }
 `;
