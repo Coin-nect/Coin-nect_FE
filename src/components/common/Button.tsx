@@ -5,10 +5,11 @@ import { COLORS, COMMON_COLORS, FONT_COLORS } from '@constants/colors';
 interface ButtonProps {
   onClick?: () => void;
   buttonText: string;
-  type?: 'default' | 'primary';
+  type?: 'default' | 'primary' | 'login';
   className?: string;
   isDisabled?: boolean;
   style?: React.CSSProperties;
+  bgColor?: string;
 }
 
 /**
@@ -16,6 +17,7 @@ interface ButtonProps {
  * isDisabled: button 비활성화 여부
  * type: 버튼 별 style (default, primary)
  * buttonText: 버튼 텍스트
+ * bgColor: 버튼 배경색 (선택적)
  * @param  onClick () => void (onClick method)
  * @param isDisabled boolean (disabled status)
  */
@@ -27,6 +29,7 @@ const Button = ({
   className,
   isDisabled,
   style,
+  bgColor,
 }: ButtonProps) => {
   return (
     <ButtonContainer
@@ -34,19 +37,21 @@ const Button = ({
       onClick={onClick}
       disabled={isDisabled}
       style={style}
+      bgColor={bgColor}
     >
-      <ButtonText>{buttonText}</ButtonText>
+      {buttonText}
     </ButtonContainer>
   );
 };
 
 export default Button;
 
-const ButtonContainer = styled.button`
+const ButtonContainer = styled.button<{ bgColor?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
+  cursor: pointer;
 
   &.default {
     background-color: ${COMMON_COLORS.main};
@@ -57,8 +62,14 @@ const ButtonContainer = styled.button`
     background-color: ${COLORS.gray};
     color: ${FONT_COLORS.white};
   }
-`;
 
-const ButtonText = styled.div`
-  font-size: 0.8rem;
+  &.login {
+    background-color: ${COLORS.gray};
+    color: ${FONT_COLORS.dark_blue};
+    font-size: 1rem;
+    font-weight: 500;
+    width: 20rem;
+    height: 3.44rem;
+    border-radius: 0.75rem;
+  }
 `;
