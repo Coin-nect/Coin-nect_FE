@@ -14,3 +14,6 @@ export { default as Stats } from './Stats/Stats';
 
 // MyPage
 export { default as MyPage } from './MyPage/MyPage';
+export { default as ProfileEdit } from './MyPage/ProfileEdit';
+export { default as NotificationSettings } from './MyPage/NotificationSettings';
+export { default as DataBackup } from './MyPage/DataBackup';
