@@ -2,20 +2,25 @@ import styled from 'styled-components';
 import { COLORS, COMMON_COLORS } from '@constants/colors';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import { SlOptionsVertical } from 'react-icons/sl';
+import { useNavigate } from 'react-router-dom';
 
 interface HeaderProps {
   title: string;
   showIcon?: boolean;
-  onBack: () => void;
 }
 
-const BackHeader = ({ title, showIcon = true, onBack }: HeaderProps) => {
+const BackHeader = ({ title, showIcon = true }: HeaderProps) => {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate(-1);
+  };
   return (
     <HeaderContainer>
       <IoArrowBackOutline
         color={COMMON_COLORS.main}
         size={24}
-        onClick={onBack}
+        onClick={handleBack}
       />
       <Title>{title}</Title>
       <IconWrapper>
