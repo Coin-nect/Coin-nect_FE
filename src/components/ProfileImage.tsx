@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import Profile from '@assets/svg/profile.svg?react';
+import Profile from '@assets/svg/Profile.svg?react';
 import Plus from '@assets/icons/Plus';
 
 interface ProfileImageProps {
