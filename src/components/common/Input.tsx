@@ -9,7 +9,9 @@ interface InputProps {
   placeholder: string;
   className?: string;
   inputType: React.HTMLInputTypeAttribute;
+  // eslint-disable-next-line no-unused-vars
   onEnterPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  // eslint-disable-next-line no-unused-vars
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   style?: React.CSSProperties;
 }
@@ -69,9 +71,12 @@ export const InputBox = styled.input`
   }
 
   &.mypage {
+    width: 90%;
     font-size: 1rem;
     background-color: ${COLORS.input_box};
     color: ${FONT_COLORS.dark_blue};
+    padding: 1rem 1.5rem;
+    border-radius: 2rem;
 
     &::placeholder {
       color: ${FONT_COLORS.placeholder};
