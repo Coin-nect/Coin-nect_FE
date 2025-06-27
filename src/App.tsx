@@ -6,6 +6,7 @@ import {
   NotFound,
   Home,
   Budget,
+  BudgetSetting,
   Stats,
   MyPage,
   ProfileEdit,
@@ -27,6 +28,7 @@ const App = () => (
 
         {/* Budget */}
         <Route path="/budget" element={<Budget />} />
+        <Route path="/budget-setting" element={<BudgetSetting />} />
 
         {/* Stats */}
         <Route path="/stats" element={<Stats />} />
