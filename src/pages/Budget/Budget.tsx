@@ -1,12 +1,87 @@
 import styled from 'styled-components';
-import { DefaultHeader, BottomNav } from '@components/index';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import {
+  DefaultHeader,
+  BottomNav,
+  StatusTag,
+  ContentContainer,
+} from '@components/index';
+import { BlurBox } from '@components/common/index';
+import { COLORS } from '@constants/colors';
+import statusMap from '@constants/statusMap';
+import { BudgetBar, BudgetLine } from '@components/charts/index';
+import Message from '@components/common/Message';
+
+const status = 'warning';
 
 const Budget = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [showMessage, setShowMessage] = useState(false);
+  const currentStatus = statusMap[status];
+
+  useEffect(() => {
+    if (location.state?.showMessage) {
+      setShowMessage(true);
+    }
+  }, [location.state]);
+
   return (
     <Container>
-      <DefaultHeader title="예산관리" />
+      <DefaultHeader
+        title="예산관리"
+        onSetting={() => navigate('/budget-setting')}
+      />
+      {showMessage && <Message text="예산이 저장되었습니다." />}
+
       <ContentContainer>
-        <Text>Budget</Text>
+        <Section>
+          <Text>00월</Text>
+          <Text>총금액: 500,000원</Text>
+          <Text>
+            남은 예산: 800,000원
+            <StatusTag
+              color={currentStatus.tag.color}
+              label={currentStatus.tag.label}
+            />
+          </Text>
+        </Section>
+
+        <BudgetBar total={500000} used={320000} />
+        <GraphLabel>예산 내역</GraphLabel>
+        <BudgetLine />
+        <Section>
+          <Text>저번 달 대비 예산 00% 증가</Text>
+        </Section>
+
+        <BlurBox
+          bgColor={currentStatus.boxColor}
+          borderRadius="1.5rem"
+          style={{
+            padding: '2rem 0',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <PlaceholderText>{currentStatus.message}</PlaceholderText>
+        </BlurBox>
+
+        <BlurBox
+          bgColor={COLORS.dark_blue}
+          borderRadius="1.5rem"
+          style={{
+            padding: '2rem 0',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <PlaceholderText>
+            친구들의 소비 습관이 궁금하다면?
+            <br />
+            (업데이트 예정)
+          </PlaceholderText>
+        </BlurBox>
       </ContentContainer>
       <BottomNav />
     </Container>
@@ -21,15 +96,30 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const ContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+const Section = styled.div`
   width: 100%;
-  height: 82vh;
+  text-align: left;
 `;
 
 const Text = styled.p`
-  font-size: 24px;
-  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+  margin: 0;
+  font-weight: 500;
+`;
+
+const PlaceholderText = styled.p`
+  font-size: 1rem;
+  color: #fff;
+  text-align: left;
+  font-weight: 500;
+  margin: 0 2rem;
+`;
+
+const GraphLabel = styled.p`
+  width: 100%;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: left;
 `;

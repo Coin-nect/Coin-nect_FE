@@ -58,11 +58,9 @@ const ModalWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background: ${COLORS.white};
-  border: 1px solid transparent ${COMMON_COLORS.main};
-  width: 80%;
-  max-width: 400px;
-  min-height: 200px;
-  max-height: 600px;
+  border: 1px solid ${COMMON_COLORS.main};
+  max-width: 300px;
+  min-height: 100px;
   padding: 28px;
   display: flex;
   flex-direction: column;
