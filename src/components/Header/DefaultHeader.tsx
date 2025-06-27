@@ -45,4 +45,5 @@ const Title = styled.div`
 const IconWrapper = styled.div`
   position: absolute;
   right: 1rem;
+  cursor: pointer;
 `;

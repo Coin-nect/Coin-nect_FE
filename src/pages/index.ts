@@ -8,6 +8,7 @@ export { default as Home } from './Home/Home';
 
 // Budget
 export { default as Budget } from './Budget/Budget';
+export { default as BudgetSetting } from './Budget/BudgetSetting';
 
 // Stats
 export { default as Stats } from './Stats/Stats';
