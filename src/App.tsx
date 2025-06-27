@@ -8,6 +8,9 @@ import {
   Budget,
   Stats,
   MyPage,
+  ProfileEdit,
+  NotificationSettings,
+  DataBackup,
 } from '@pages/index';
 
 const App = () => (
@@ -30,6 +33,12 @@ const App = () => (
 
         {/* MyPage */}
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/profile-edit" element={<ProfileEdit />} />
+        <Route
+          path="/notification-settings"
+          element={<NotificationSettings />}
+        />
+        <Route path="/data-backup" element={<DataBackup />} />
       </Routes>
     </Container>
   </Router>

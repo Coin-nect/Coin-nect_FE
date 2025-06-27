@@ -5,11 +5,12 @@ import { COLORS, COMMON_COLORS, FONT_COLORS } from '@constants/colors';
 interface ButtonProps {
   onClick?: () => void;
   buttonText: string;
-  type?: 'default' | 'primary' | 'login';
+  type?: 'default' | 'primary' | 'login' | 'modalBtn' | 'saveBtn' | 'mypageBtn';
   className?: string;
   isDisabled?: boolean;
   style?: React.CSSProperties;
   bgColor?: string;
+  txtColor?: string;
 }
 
 /**
@@ -30,6 +31,7 @@ const Button = ({
   isDisabled,
   style,
   bgColor,
+  txtColor,
 }: ButtonProps) => {
   return (
     <ButtonContainer
@@ -38,6 +40,7 @@ const Button = ({
       disabled={isDisabled}
       style={style}
       bgColor={bgColor}
+      txtColor={txtColor}
     >
       {buttonText}
     </ButtonContainer>
@@ -46,7 +49,7 @@ const Button = ({
 
 export default Button;
 
-const ButtonContainer = styled.button<{ bgColor?: string }>`
+const ButtonContainer = styled.button<{ bgColor?: string; txtColor?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,5 +74,32 @@ const ButtonContainer = styled.button<{ bgColor?: string }>`
     width: 20rem;
     height: 3.44rem;
     border-radius: 0.75rem;
+  }
+
+  &.modalBtn {
+    width: 100%;
+    background-color: ${({ bgColor }) => bgColor || COLORS.gray};
+    color: ${FONT_COLORS.white};
+    border-radius: 0.5rem;
+    padding: 0.8rem 0;
+    font-size: 0.8rem;
+  }
+
+  &.saveBtn {
+    background-color: ${({ bgColor }) => bgColor || COMMON_COLORS.main};
+    color: ${({ txtColor }) => txtColor || FONT_COLORS.white};
+    border-radius: 2rem;
+    width: 30%;
+    padding: 0.8rem 0;
+    font-size: 1rem;
+  }
+
+  &.mypageBtn {
+    background-color: ${COLORS.input_box};
+    color: ${FONT_COLORS.dark_blue};
+    border-radius: 2rem;
+    width: 100%;
+    padding: 1rem 0;
+    font-size: 1.2rem;
   }
 `;
