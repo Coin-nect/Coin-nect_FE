@@ -17,6 +17,14 @@ const lineData = [
   { month: '6월', amount: 480000 },
 ];
 
+const CustomCursor = (props: any) => {
+  const { points } = props;
+  const { x } = points[0];
+  return (
+    <line x1={x} y1={0} x2={x} y2={120} stroke={COLORS.gray} strokeWidth={1} />
+  );
+};
+
 const BudgetLine = () => {
   return (
     <Container>
@@ -24,7 +32,7 @@ const BudgetLine = () => {
         <LineChart data={lineData}>
           <XAxis dataKey="month" hide />
           <YAxis hide />
-          <Tooltip />
+          <Tooltip cursor={<CustomCursor />} />
           <Line
             type="monotone"
             dataKey="amount"
