@@ -59,7 +59,7 @@ const ModalWrapper = styled.div`
   transform: translate(-50%, -50%);
   background: ${COLORS.white};
   border: 1px solid ${COMMON_COLORS.main};
-  max-width: 300px;
+  max-width: 380px;
   min-height: 100px;
   padding: 28px;
   display: flex;

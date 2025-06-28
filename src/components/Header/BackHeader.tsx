@@ -11,7 +11,6 @@ interface HeaderProps {
 
 const BackHeader = ({ title, showIcon = true }: HeaderProps) => {
   const navigate = useNavigate();
-
   const handleBack = () => {
     navigate(-1);
   };
@@ -21,6 +20,7 @@ const BackHeader = ({ title, showIcon = true }: HeaderProps) => {
         color={COMMON_COLORS.main}
         size={24}
         onClick={handleBack}
+        style={{ cursor: 'pointer', marginLeft: '1rem' }}
       />
       <Title>{title}</Title>
       <IconWrapper>
