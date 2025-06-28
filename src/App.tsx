@@ -13,10 +13,12 @@ import {
   NotificationSettings,
   DataBackup,
 } from '@pages/index';
+import ScrollToTop from '@components/ScrollToTop';
 
 const App = () => (
   <Router>
     <Container>
+      <ScrollToTop />
       <Routes>
         {/* Init */}
         <Route path="/" element={<Login />} />
