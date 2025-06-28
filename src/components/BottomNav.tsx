@@ -63,6 +63,7 @@ const NavBar = styled.nav`
   width: 100%;
   padding: 1rem;
   background-color: ${COLORS.white};
+  box-sizing: border-box;
 `;
 
 const NavItem = styled.div<{ active: boolean }>`
