@@ -5,6 +5,7 @@ export { default as NotFound } from './NotFound';
 
 // Home
 export { default as Home } from './Home/Home';
+export { default as Search } from './Home/Search';
 
 // Budget
 export { default as Budget } from './Budget/Budget';

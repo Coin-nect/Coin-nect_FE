@@ -12,6 +12,7 @@ import {
   ProfileEdit,
   NotificationSettings,
   DataBackup,
+  Search,
 } from '@pages/index';
 import ScrollToTop from '@components/ScrollToTop';
 
@@ -27,6 +28,7 @@ const App = () => (
 
         {/* Home */}
         <Route path="/home" element={<Home />} />
+        <Route path="/search" element={<Search />} />
 
         {/* Budget */}
         <Route path="/budget" element={<Budget />} />
