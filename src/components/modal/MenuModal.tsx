@@ -34,7 +34,7 @@ const MenuContainer = styled.div`
   border-radius: 8px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
   background-color: #f5f5f5;
-  z-index: 99;
+  z-index: 5;
 `;
 
 const MenuItem = styled.div`
