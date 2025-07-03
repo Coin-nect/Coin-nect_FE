@@ -1,19 +1,28 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { CalendarHeader, BottomNav, ContentContainer } from '@components/index';
 import CalendarSection from './CalendarSection';
 import TotalSummary from '@components/home/TotalSummary';
 import PlusBtn from '@components/home/PlusBtn';
 import ListSection from './ListSection';
+import Message from '@components/common/Message';
 
 const Home = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [showMessage, setShowMessage] = useState(false);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isList, setIsList] = useState(false);
 
+  useEffect(() => {
+    if (location.state?.showMessage) {
+      setShowMessage(true);
+    }
+  }, [location.state]);
+
   const handlePlusClick = () => {
-    alert('플러스 버튼 클릭');
+    navigate('/form');
   };
 
   const toggleList = () => {
@@ -29,6 +38,7 @@ const Home = () => {
         toggleList={toggleList}
         onClick={() => navigate('/search')}
       />
+      {showMessage && <Message text="저장되었습니다." />}
       <ContentContainer style={{ padding: '0', margin: '1rem 0' }}>
         <TotalSummary total={100000000} income={640000} spending={91000} />
         {isList ? (

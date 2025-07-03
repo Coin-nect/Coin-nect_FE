@@ -13,6 +13,7 @@ import {
   NotificationSettings,
   DataBackup,
   Search,
+  IncomeExpenseForm,
 } from '@pages/index';
 import ScrollToTop from '@components/ScrollToTop';
 
@@ -29,6 +30,7 @@ const App = () => (
         {/* Home */}
         <Route path="/home" element={<Home />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/form" element={<IncomeExpenseForm />} />
 
         {/* Budget */}
         <Route path="/budget" element={<Budget />} />
