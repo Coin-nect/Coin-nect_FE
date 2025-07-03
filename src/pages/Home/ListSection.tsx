@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import DateSummary from '@components/home/DateSummary';
 import TransactionItem from '@components/home/TransactionItem';
@@ -9,6 +10,7 @@ interface Dates {
 }
 
 const ListSection = ({ currentDate }: Dates) => {
+  const navigate = useNavigate();
   const currentYearMonth = `${currentDate.getFullYear()}.${String(currentDate.getMonth() + 1).padStart(2, '0')}`;
   const filteredData = transactionData.filter(
     day => day.yearMonth === currentYearMonth,
@@ -26,14 +28,20 @@ const ListSection = ({ currentDate }: Dates) => {
               income={dayData.income}
               expense={dayData.expense}
             />
-            {dayData.transactions.map((item, i) => (
+            {dayData.transactions.map(item => (
               <TransactionItem
-                key={i}
+                key={idx}
+                id={item.id}
                 time={item.time}
                 category={item.category}
                 title={item.title}
                 amount={item.amount}
                 isIncome={item.isIncome}
+                onClick={id =>
+                  navigate(`/view/${id}`, {
+                    state: { id },
+                  })
+                }
               />
             ))}
           </DayContainer>

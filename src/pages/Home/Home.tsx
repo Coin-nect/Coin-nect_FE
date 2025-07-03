@@ -15,6 +15,19 @@ const Home = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isList, setIsList] = useState(false);
 
+  // 마운트될 때 sessionStorage 값 읽기
+  useEffect(() => {
+    const savedIsList = sessionStorage.getItem('isList');
+    if (savedIsList === 'true') {
+      setIsList(true);
+    }
+  }, []);
+
+  // 상태 변경될 때 sessionStorage에 저장
+  useEffect(() => {
+    sessionStorage.setItem('isList', String(isList));
+  }, [isList]);
+
   useEffect(() => {
     if (location.state?.showMessage) {
       setShowMessage(true);
