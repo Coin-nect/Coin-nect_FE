@@ -1,4 +1,5 @@
 export interface Transaction {
+  id: string;
   time: string;
   category: string;
   title: string;
@@ -24,6 +25,7 @@ export const transactionData: DayData[] = [
     expense: 10000,
     transactions: [
       {
+        id: 't-1-1',
         time: '12:53',
         category: '식비',
         title: '샐러드 & 샌드위치',
@@ -40,6 +42,7 @@ export const transactionData: DayData[] = [
     expense: 78000,
     transactions: [
       {
+        id: 't-2-1',
         time: '10:31',
         category: '비상금',
         title: '비상금',
@@ -47,6 +50,7 @@ export const transactionData: DayData[] = [
         isIncome: true,
       },
       {
+        id: 't-2-2',
         time: '12:40',
         category: '식비',
         title: '편의점 도시락',
@@ -54,6 +58,7 @@ export const transactionData: DayData[] = [
         isIncome: false,
       },
       {
+        id: 't-2-3',
         time: '15:20',
         category: '취미',
         title: '그라운드시소 전시회',
@@ -61,6 +66,7 @@ export const transactionData: DayData[] = [
         isIncome: false,
       },
       {
+        id: 't-2-4',
         time: '19:55',
         category: '쇼핑',
         title: '모자 구매',
@@ -77,6 +83,7 @@ export const transactionData: DayData[] = [
     expense: 3000,
     transactions: [
       {
+        id: 't-3-1',
         time: '10:35',
         category: '기타',
         title: '어쩌구 환불',
@@ -84,6 +91,7 @@ export const transactionData: DayData[] = [
         isIncome: true,
       },
       {
+        id: 't-3-2',
         time: '12:42',
         category: '식비',
         title: '편의점 도시락',
@@ -100,6 +108,7 @@ export const transactionData: DayData[] = [
     expense: 38000,
     transactions: [
       {
+        id: 't-4-1',
         time: '19:55',
         category: '쇼핑',
         title: '모자 구매',

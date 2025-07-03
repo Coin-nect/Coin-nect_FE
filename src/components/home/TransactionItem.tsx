@@ -2,22 +2,33 @@ import styled from 'styled-components';
 import { COLORS } from '@constants/colors';
 
 interface TransactionItemProps {
+  id: string;
   time: string;
   category: string;
   title: string;
   amount: number;
   isIncome: boolean;
+  // eslint-disable-next-line no-unused-vars
+  onClick?: (id: string) => void;
 }
 
 const TransactionItem = ({
+  id,
   time,
   category,
   title,
   amount,
   isIncome,
+  onClick,
 }: TransactionItemProps) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick(id);
+    }
+  };
+
   return (
-    <ItemContainer>
+    <ItemContainer onClick={handleClick}>
       <LeftBox>
         <TimeText>{time}</TimeText>
         <CategoryText>{category}</CategoryText>
@@ -41,6 +52,7 @@ const ItemContainer = styled.div`
   justify-content: space-between;
   box-sizing: border-box;
   padding: 0.5rem 1rem;
+  cursor: pointer;
 `;
 
 const LeftBox = styled.div`

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { Calendar, DateSummary, TransactionItem } from '@components/home/index';
 import { GrMoney } from 'react-icons/gr';
 import { COLORS } from '@constants/colors';
@@ -10,9 +11,9 @@ interface Dates {
 }
 
 const CalendarSection = ({ currentDate }: Dates) => {
-  const initialDay =
-    transactionData.length > 0 ? transactionData[0].date : null;
-  const [selectedDay, setSelectedDay] = useState<number | null>(initialDay);
+  const navigate = useNavigate();
+  const today = new Date().getDate();
+  const [selectedDay, setSelectedDay] = useState<number | null>(today);
 
   const selectedData: DayData | undefined = transactionData.find(
     d =>
@@ -47,11 +48,17 @@ const CalendarSection = ({ currentDate }: Dates) => {
           {selectedData.transactions.map((item, idx) => (
             <TransactionItem
               key={idx}
+              id={item.id}
               time={item.time}
               category={item.category}
               title={item.title}
               amount={item.amount}
               isIncome={item.isIncome}
+              onClick={id =>
+                navigate(`/view/${id}`, {
+                  state: { id },
+                })
+              }
             />
           ))}
         </div>
