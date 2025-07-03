@@ -7,9 +7,10 @@ import { useNavigate } from 'react-router-dom';
 interface HeaderProps {
   title: string;
   showIcon?: boolean;
+  onClick?: () => void;
 }
 
-const BackHeader = ({ title, showIcon = true }: HeaderProps) => {
+const BackHeader = ({ title, showIcon = true, onClick }: HeaderProps) => {
   const navigate = useNavigate();
   const handleBack = () => {
     navigate(-1);
@@ -23,8 +24,13 @@ const BackHeader = ({ title, showIcon = true }: HeaderProps) => {
         style={{ cursor: 'pointer', marginLeft: '1rem' }}
       />
       <Title>{title}</Title>
-      <IconWrapper>
-        {showIcon ? <SlOptionsVertical color={COMMON_COLORS.main} /> : null}
+      <IconWrapper onClick={onClick}>
+        {showIcon ? (
+          <SlOptionsVertical
+            color={COMMON_COLORS.main}
+            style={{ cursor: 'pointer' }}
+          />
+        ) : null}
       </IconWrapper>
     </HeaderContainer>
   );

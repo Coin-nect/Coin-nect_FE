@@ -1,10 +1,21 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { CalendarHeader, BottomNav } from '@components/index';
 
 const Stats = () => {
+  const navigate = useNavigate();
+  const [currentDate, setCurrentDate] = useState(new Date());
+
   return (
     <Container>
-      <CalendarHeader showLeftIcon={false} showRightIcon={false} />
+      <CalendarHeader
+        showLeftIcon={false}
+        showRightIcon={false}
+        currentDate={currentDate}
+        setCurrentDate={setCurrentDate}
+        onClick={() => navigate('/')}
+      />
       <ContentContainer>
         <Text>Stats</Text>
       </ContentContainer>

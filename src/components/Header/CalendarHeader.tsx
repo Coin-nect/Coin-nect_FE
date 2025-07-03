@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import { getFormattedDate } from '@utils/Date';
 import { COLORS, COMMON_COLORS, FONT_COLORS } from '@constants/colors';
@@ -8,44 +7,46 @@ import { IoCalendarNumber, IoSearch } from 'react-icons/io5';
 import { BsBarChartFill } from 'react-icons/bs';
 
 interface HeaderProps {
+  currentDate: Date;
+  // eslint-disable-next-line no-unused-vars
+  setCurrentDate: (date: Date) => void;
+  toggleList?: () => void;
+  isList?: boolean;
   showLeftIcon?: boolean;
   showRightIcon?: boolean;
   onClick?: () => void;
 }
 
 const CalendarHeader = ({
+  currentDate,
+  setCurrentDate,
+  isList,
+  toggleList,
   showLeftIcon = true,
   showRightIcon = true,
   onClick,
 }: HeaderProps) => {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [isListIcon, setIsListIcon] = useState(true);
-
   const handlePrevMonth = () => {
     setCurrentDate(
-      prev => new Date(prev.getFullYear(), prev.getMonth() - 1, 1),
+      new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1),
     );
   };
 
   const handleNextMonth = () => {
     setCurrentDate(
-      prev => new Date(prev.getFullYear(), prev.getMonth() + 1, 1),
+      new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1),
     );
-  };
-
-  const toggleLeftIcon = () => {
-    setIsListIcon(prev => !prev);
   };
 
   return (
     <HeaderContainer>
       <IconWrapper>
         {showLeftIcon && (
-          <IconWrapper onClick={toggleLeftIcon}>
-            {isListIcon ? (
-              <FaList color={COLORS.white} size={24} />
-            ) : (
+          <IconWrapper onClick={toggleList}>
+            {isList ? (
               <IoCalendarNumber color={COLORS.white} size={24} />
+            ) : (
+              <FaList color={COLORS.white} size={24} />
             )}
           </IconWrapper>
         )}
@@ -64,8 +65,11 @@ const CalendarHeader = ({
         />
       </DateContainer>
       <IconWrapper onClick={onClick}>
-        {showRightIcon && <IoSearch color={COLORS.white} size={24} />}
-        {!showRightIcon && <BsBarChartFill color={COLORS.white} size={24} />}
+        {showRightIcon ? (
+          <IoSearch color={COLORS.white} size={24} />
+        ) : (
+          <BsBarChartFill color={COLORS.white} size={24} />
+        )}
       </IconWrapper>
     </HeaderContainer>
   );
@@ -104,4 +108,5 @@ const IconWrapper = styled.div`
   outline: none;
   width: 24px;
   margin: 0 1rem;
+  cursor: pointer;
 `;

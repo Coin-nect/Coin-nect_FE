@@ -12,6 +12,9 @@ import {
   ProfileEdit,
   NotificationSettings,
   DataBackup,
+  Search,
+  IncomeExpenseForm,
+  ViewIncomeExpense,
 } from '@pages/index';
 import ScrollToTop from '@components/ScrollToTop';
 
@@ -27,6 +30,9 @@ const App = () => (
 
         {/* Home */}
         <Route path="/home" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/form" element={<IncomeExpenseForm />} />
+        <Route path="/view/:id" element={<ViewIncomeExpense />} />
 
         {/* Budget */}
         <Route path="/budget" element={<Budget />} />

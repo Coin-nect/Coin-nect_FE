@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { COLORS, COMMON_COLORS, FONT_COLORS } from '@constants/colors';
 import { IoArrowBackOutline, IoSearch } from 'react-icons/io5';
@@ -6,10 +7,12 @@ import { IoArrowBackOutline, IoSearch } from 'react-icons/io5';
 interface HeaderProps {
   text: string;
   onSearch: () => void;
-  onBack: () => void;
+  // eslint-disable-next-line no-unused-vars
+  onTextChange: (value: string) => void;
 }
 
-const SearchHeader = ({ text, onSearch, onBack }: HeaderProps) => {
+const SearchHeader = ({ text, onSearch, onTextChange }: HeaderProps) => {
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState(text);
 
   const handleSearch = () => {
@@ -18,21 +21,33 @@ const SearchHeader = ({ text, onSearch, onBack }: HeaderProps) => {
       onSearch();
     }
   };
+  const handleBack = () => {
+    navigate(-1);
+  };
 
   return (
     <HeaderContainer>
       <IoArrowBackOutline
         color={COMMON_COLORS.main}
         size={24}
-        onClick={onBack}
+        onClick={handleBack}
+        style={{ cursor: 'pointer' }}
       />
       <Input
         type="text"
         value={inputValue}
-        onChange={e => setInputValue(e.target.value)}
+        onChange={e => {
+          setInputValue(e.target.value);
+          onTextChange(e.target.value);
+        }}
         placeholder="검색어를 입력하세요"
       />
-      <IoSearch color={COMMON_COLORS.main} size={24} onClick={handleSearch} />
+      <IoSearch
+        color={COMMON_COLORS.main}
+        size={24}
+        onClick={handleSearch}
+        style={{ cursor: 'pointer' }}
+      />
     </HeaderContainer>
   );
 };
@@ -44,9 +59,10 @@ const HeaderContainer = styled.header`
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding: 1rem;
   background-color: ${COLORS.white};
   border-bottom: 1.5px solid ${COMMON_COLORS.main};
+  box-sizing: border-box;
 `;
 
 const Input = styled.input`
