@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import SearchHeader from '@components/Header/SearchHeader';
 import DateSummary from '@components/home/DateSummary';
@@ -7,6 +8,7 @@ import { transactionData, DayData } from '@constants/dummy';
 import { COLORS } from '@constants/colors';
 
 const SearchPage = () => {
+  const navigate = useNavigate();
   const [searchText, setSearchText] = useState('');
   const [resultList, setResultList] = useState<DayData[]>([]);
 
@@ -54,14 +56,20 @@ const SearchPage = () => {
               income={day.income}
               expense={day.expense}
             />
-            {day.transactions.map((item, i) => (
+            {day.transactions.map(item => (
               <TransactionItem
-                key={i}
+                key={idx}
+                id={item.id}
                 time={item.time}
                 category={item.category}
                 title={item.title}
                 amount={item.amount}
                 isIncome={item.isIncome}
+                onClick={id =>
+                  navigate(`/view/${id}`, {
+                    state: { id },
+                  })
+                }
               />
             ))}
           </DayContainer>
