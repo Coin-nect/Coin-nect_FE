@@ -10,8 +10,8 @@ interface HeaderProps {
   currentDate: Date;
   // eslint-disable-next-line no-unused-vars
   setCurrentDate: (date: Date) => void;
-  toggleList: () => void;
-  isList: boolean;
+  toggleList?: () => void;
+  isList?: boolean;
   showLeftIcon?: boolean;
   showRightIcon?: boolean;
   onClick?: () => void;
