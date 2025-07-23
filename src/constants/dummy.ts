@@ -44,8 +44,8 @@ export const transactionData: DayData[] = [
       {
         id: 't-2-1',
         time: '10:31',
-        category: '비상금',
-        title: '비상금',
+        category: '기타',
+        title: '기타',
         amount: 30000,
         isIncome: true,
       },
@@ -60,7 +60,7 @@ export const transactionData: DayData[] = [
       {
         id: 't-2-3',
         time: '15:20',
-        category: '취미',
+        category: '문화/여가',
         title: '그라운드시소 전시회',
         amount: 20000,
         isIncome: false,
@@ -68,7 +68,7 @@ export const transactionData: DayData[] = [
       {
         id: 't-2-4',
         time: '19:55',
-        category: '쇼핑',
+        category: '미용/쇼핑',
         title: '모자 구매',
         amount: 50000,
         isIncome: false,
@@ -110,7 +110,7 @@ export const transactionData: DayData[] = [
       {
         id: 't-4-1',
         time: '19:55',
-        category: '쇼핑',
+        category: '미용/쇼핑',
         title: '모자 구매',
         amount: 38000,
         isIncome: false,
