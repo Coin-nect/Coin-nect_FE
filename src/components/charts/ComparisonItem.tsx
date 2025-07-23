@@ -1,8 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 import { COLORS } from '@constants/colors';
+import { useNavigate } from 'react-router-dom';
 
 type ComparisonItemProps = {
-  label: string;
+  date: string;
   amount: number;
   details: number[];
   colors: string[];
@@ -10,15 +11,21 @@ type ComparisonItemProps = {
 };
 
 const ComparisonItem = ({
-  label,
+  date,
   amount,
   details,
   colors,
   total,
 }: ComparisonItemProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/analysis-detail/${date}`);
+  };
+
   return (
-    <Wrapper>
-      <Label>{label}</Label>
+    <Wrapper onClick={handleClick}>
+      <Label>{date}</Label>
       <RightBox>
         <Amount>{amount.toLocaleString()}원</Amount>
         <ColorBar>
@@ -33,12 +40,22 @@ const ComparisonItem = ({
 
 export default ComparisonItem;
 
+const grow = keyframes`
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+`;
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
   width: 100%;
   box-sizing: border-box;
+  cursor: pointer;
 `;
 
 const Label = styled.div`
@@ -60,15 +77,6 @@ const Amount = styled.div`
   color: ${COLORS.dark_blue};
   font-weight: 500;
   margin-bottom: 4px;
-`;
-
-const grow = keyframes`
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
 `;
 
 const ColorBar = styled.div`

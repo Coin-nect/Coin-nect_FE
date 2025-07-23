@@ -1,5 +1,6 @@
-import { COLORS, COMMON_COLORS } from '@constants/colors';
+import { useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
+import { COLORS, COMMON_COLORS } from '@constants/colors';
 
 const MAX_BAR_HEIGHT = 150;
 
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const AnalysisChart = ({ data }: Props) => {
+  const navigate = useNavigate();
   const maxIncome = Math.max(...data.map(d => d.income));
   const maxExpense = Math.max(...data.map(d => d.expense));
   const reversedData = data.slice().reverse();
@@ -32,7 +34,10 @@ const AnalysisChart = ({ data }: Props) => {
         <BarsArea>
           <BarRow alignBottom>
             {reversedData.map((item, index) => (
-              <BarWrapper key={index}>
+              <BarWrapper
+                key={`income-${index}`}
+                onClick={() => navigate(`/analysis-detail/${item.date}`)}
+              >
                 <Bar
                   height={(item.income / maxIncome) * MAX_BAR_HEIGHT}
                   color={COMMON_COLORS.yellow}
@@ -46,7 +51,10 @@ const AnalysisChart = ({ data }: Props) => {
 
           <BarRow alignBottom={false}>
             {reversedData.map((item, index) => (
-              <BarWrapper key={index}>
+              <BarWrapper
+                key={`expense-${index}`}
+                onClick={() => navigate(`/analysis-detail/${item.date}`)}
+              >
                 <Bar
                   height={(item.expense / maxExpense) * MAX_BAR_HEIGHT}
                   color={COMMON_COLORS.main}
@@ -58,7 +66,12 @@ const AnalysisChart = ({ data }: Props) => {
 
           <LabelRow>
             {reversedData.map((item, index) => (
-              <Label key={index}>{item.date}</Label>
+              <Label
+                key={index}
+                onClick={() => navigate(`/analysis-detail/${item.date}`)}
+              >
+                {item.date}
+              </Label>
             ))}
           </LabelRow>
         </BarsArea>
@@ -150,6 +163,7 @@ const BarRow = styled.div<{ alignBottom: boolean }>`
 const BarWrapper = styled.div`
   display: flex;
   justify-content: center;
+  cursor: pointer;
 `;
 
 const grow = keyframes`
