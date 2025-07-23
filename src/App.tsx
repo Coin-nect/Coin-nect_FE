@@ -15,6 +15,7 @@ import {
   Search,
   IncomeExpenseForm,
   ViewIncomeExpense,
+  Analysis,
 } from '@pages/index';
 import ScrollToTop from '@components/ScrollToTop';
 
@@ -40,6 +41,7 @@ const App = () => (
 
         {/* Stats */}
         <Route path="/stats" element={<Stats />} />
+        <Route path="/analysis" element={<Analysis />} />
 
         {/* MyPage */}
         <Route path="/mypage" element={<MyPage />} />

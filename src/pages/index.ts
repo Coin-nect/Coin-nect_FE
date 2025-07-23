@@ -15,6 +15,7 @@ export { default as BudgetSetting } from './Budget/BudgetSetting';
 
 // Stats
 export { default as Stats } from './Stats/Stats';
+export { default as Analysis } from './Stats/Analysis';
 
 // MyPage
 export { default as MyPage } from './MyPage/MyPage';
