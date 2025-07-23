@@ -52,7 +52,7 @@ const AnalysisReport = () => {
         {sortedComparisonData.map((item, idx) => (
           <ComparisonItem
             key={`${isYearly}-${idx}`}
-            label={item.label}
+            date={item.date}
             amount={item.amount}
             details={item.sortedDetails}
             colors={item.colors}
