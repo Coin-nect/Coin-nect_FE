@@ -9,6 +9,7 @@ import {
   CategoryItem,
   DateSummary,
   TransactionItem,
+  StatsSummary,
 } from '@components/index';
 import { categories as categoryIcons } from '@constants/categories';
 import { transactionData } from '@constants/dummy';
@@ -56,7 +57,7 @@ const Stats = () => {
         setCurrentDate={setCurrentDate}
         onClick={() => navigate('/analysis')}
       />
-
+      <StatsSummary income={1000000} expense={1000000} variant="default" />
       <ContentContainer>
         <StatsPie
           data={sortedPieData}

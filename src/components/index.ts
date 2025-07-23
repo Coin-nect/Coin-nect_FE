@@ -8,3 +8,4 @@ export { default as ProfileImage } from './ProfileImage';
 export { default as ProfileInfo } from './ProfileInfo';
 export { default as StatusTag } from './StatusTag';
 export { default as CategoryItem } from './CategoryItem';
+export { default as StatsSummary } from './StatsSummary';

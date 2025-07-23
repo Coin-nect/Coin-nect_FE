@@ -8,6 +8,7 @@ import {
   CategoryItem,
   DateSummary,
   TransactionItem,
+  StatsSummary,
 } from '@components/index';
 import { categories as categoryIcons } from '@constants/categories';
 import { transactionData } from '@constants/dummy';
@@ -46,6 +47,8 @@ const AnalysisDetail = () => {
   return (
     <Container>
       <BackHeader title={date ?? '분석 상세'} showIcon={false} />
+      <StatsSummary income={1000000} expense={1000000} variant="white" />
+
       <ContentContainer>
         <StatsPie
           data={sortedPieData}
