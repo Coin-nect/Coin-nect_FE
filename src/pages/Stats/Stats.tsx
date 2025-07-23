@@ -74,7 +74,11 @@ const Stats = () => {
                 label={cat.name}
                 percent={cat.value}
                 amount={cat.amount}
-                onClick={category => setSelectedCategory(category)}
+                onClick={category =>
+                  setSelectedCategory(prev =>
+                    prev === category ? null : category,
+                  )
+                }
               />
             ))
           ) : (
@@ -87,7 +91,11 @@ const Stats = () => {
                 label={selectedData?.name ?? ''}
                 percent={selectedData?.value ?? 0}
                 amount={selectedData?.amount ?? 0}
-                onClick={category => setSelectedCategory(category)}
+                onClick={category =>
+                  setSelectedCategory(prev =>
+                    prev === category ? null : category,
+                  )
+                }
               />
 
               <TimelineWrapper>

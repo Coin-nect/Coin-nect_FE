@@ -38,6 +38,7 @@ const ItemContainer = styled.div`
   align-items: center;
   padding: 10px 0;
   box-sizing: border-box;
+  cursor: pointer;
 `;
 
 const LeftSection = styled.div`
