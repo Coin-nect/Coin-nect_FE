@@ -56,6 +56,7 @@ const Stats = () => {
         currentDate={currentDate}
         setCurrentDate={setCurrentDate}
         onClick={() => navigate('/analysis')}
+        type="stats"
       />
       <StatsSummary income={1000000} expense={1000000} variant="default" />
       <ContentContainer>
