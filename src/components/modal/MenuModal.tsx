@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '@constants/colors';
 import { FaPen, FaTrash } from 'react-icons/fa';
@@ -5,11 +6,28 @@ import { FaPen, FaTrash } from 'react-icons/fa';
 interface MenuModalProps {
   onEdit: () => void;
   onDelete: () => void;
+  onClose: () => void;
 }
 
-const MenuModal = ({ onEdit, onDelete }: MenuModalProps) => {
+const MenuModal = ({ onEdit, onDelete, onClose }: MenuModalProps) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [onClose]);
+
   return (
-    <MenuContainer>
+    <MenuContainer ref={modalRef}>
       <MenuItem onClick={onEdit}>
         <FaPen size={14} style={{ marginRight: '0.5rem' }} />
         수정하기

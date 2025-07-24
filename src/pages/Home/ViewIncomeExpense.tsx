@@ -46,7 +46,13 @@ const ViewIncomeExpense = () => {
         showIcon={true}
         onClick={() => setMenuOpen(!menuOpen)}
       />
-      {menuOpen && <MenuModal onEdit={handleEdit} onDelete={handleDelete} />}
+      {menuOpen && (
+        <MenuModal
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+          onClose={() => setMenuOpen(false)}
+        />
+      )}
       <CheckModal
         isVisible={checkModalOpen}
         closeModal={() => setCheckModalOpen(false)}
