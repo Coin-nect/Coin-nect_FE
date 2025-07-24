@@ -30,7 +30,7 @@ const ListSection = ({ currentDate }: Dates) => {
             />
             {dayData.transactions.map(item => (
               <TransactionItem
-                key={idx}
+                key={item.id}
                 id={item.id}
                 time={item.time}
                 category={item.category}

@@ -27,12 +27,12 @@ const BudgetSetting = () => {
         <Section>
           <Title>00월 예산을 재설정하시겠어요?</Title>
         </Section>
-        <BudgetBox bgColor={COLORS.input_box} textColor="#000">
+        <BudgetBox $bgColor={COLORS.input_box} $textColor="#000">
           <Label>기존 예산</Label>
           <Amount>₩ 1,500,000</Amount>
         </BudgetBox>
 
-        <BudgetBox bgColor="#343A40" textColor="#fff">
+        <BudgetBox $bgColor="#343A40" $textColor="#fff">
           <Label>변경 예정 예산</Label>
           <AmountInput
             type="text"
@@ -80,9 +80,9 @@ const Title = styled.h2`
   margin-bottom: 1.5rem;
 `;
 
-const BudgetBox = styled.div<{ bgColor: string; textColor: string }>`
-  background-color: ${({ bgColor }) => bgColor};
-  color: ${({ textColor }) => textColor};
+const BudgetBox = styled.div<{ $bgColor: string; $textColor: string }>`
+  background-color: ${({ $bgColor }) => $bgColor};
+  color: ${({ $textColor }) => $textColor};
   border-radius: 1.5rem;
   padding: 3rem 1.5rem;
   text-align: center;

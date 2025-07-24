@@ -34,7 +34,7 @@ const TransactionItem = ({
         <CategoryText>{category}</CategoryText>
       </LeftBox>
       <TitleText>{title}</TitleText>
-      <AmountText isIncome={isIncome}>
+      <AmountText $isIncome={isIncome}>
         {isIncome
           ? `+ ${amount.toLocaleString()}원`
           : `- ${amount.toLocaleString()}원`}
@@ -87,7 +87,7 @@ const TitleText = styled.div`
   font-weight: 500;
 `;
 
-const AmountText = styled.div<{ isIncome: boolean }>`
+const AmountText = styled.div<{ $isIncome: boolean }>`
   font-size: 0.9rem;
-  color: ${({ isIncome }) => (isIncome ? COLORS.blue : COLORS.red)};
+  color: ${({ $isIncome }) => ($isIncome ? COLORS.blue : COLORS.red)};
 `;

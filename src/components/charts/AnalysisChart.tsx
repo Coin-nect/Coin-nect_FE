@@ -32,7 +32,7 @@ const AnalysisChart = ({ data }: Props) => {
 
       <BarChartWrapper>
         <BarsArea>
-          <BarRow alignBottom>
+          <BarRow $alignBottom>
             {reversedData.map((item, index) => (
               <BarWrapper
                 key={`income-${index}`}
@@ -41,7 +41,7 @@ const AnalysisChart = ({ data }: Props) => {
                 <Bar
                   height={(item.income / maxIncome) * MAX_BAR_HEIGHT}
                   color={COMMON_COLORS.yellow}
-                  isTop
+                  $isTop
                 />
               </BarWrapper>
             ))}
@@ -49,7 +49,7 @@ const AnalysisChart = ({ data }: Props) => {
 
           <CenterLine />
 
-          <BarRow alignBottom={false}>
+          <BarRow $alignBottom={false}>
             {reversedData.map((item, index) => (
               <BarWrapper
                 key={`expense-${index}`}
@@ -58,7 +58,7 @@ const AnalysisChart = ({ data }: Props) => {
                 <Bar
                   height={(item.expense / maxExpense) * MAX_BAR_HEIGHT}
                   color={COMMON_COLORS.main}
-                  isTop={false}
+                  $isTop={false}
                 />
               </BarWrapper>
             ))}
@@ -152,12 +152,12 @@ const BarsArea = styled.div`
   padding-right: 0.5rem;
 `;
 
-const BarRow = styled.div<{ alignBottom: boolean }>`
+const BarRow = styled.div<{ $alignBottom: boolean }>`
   display: flex;
   justify-content: space-around;
   height: ${MAX_BAR_HEIGHT}px;
-  align-items: ${({ alignBottom }) =>
-    alignBottom ? 'flex-end' : 'flex-start'};
+  align-items: ${({ $alignBottom }) =>
+    $alignBottom ? 'flex-end' : 'flex-start'};
 `;
 
 const BarWrapper = styled.div`
@@ -175,12 +175,12 @@ const grow = keyframes`
   }
 `;
 
-const Bar = styled.div<{ height: number; color: string; isTop: boolean }>`
+const Bar = styled.div<{ height: number; color: string; $isTop: boolean }>`
   width: 2.4rem;
   height: ${({ height }) => height}px;
   background-color: ${({ color }) => color};
-  border-radius: ${({ isTop }) =>
-    isTop ? '0.5rem 0.5rem 0 0' : '0 0 0.5rem 0.5rem'};
+  border-radius: ${({ $isTop }) =>
+    $isTop ? '0.5rem 0.5rem 0 0' : '0 0 0.5rem 0.5rem'};
   animation: ${grow} 0.8s ease-out;
   --final-height: ${({ height }) => height}px;
 `;

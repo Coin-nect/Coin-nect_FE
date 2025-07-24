@@ -30,7 +30,7 @@ const ComparisonItem = ({
         <Amount>{amount.toLocaleString()}원</Amount>
         <ColorBar>
           {details.map((val, i) => (
-            <ColorSegment key={i} color={colors[i]} flex={val / total} />
+            <ColorSegment key={i} color={colors[i]} $flex={val / total} />
           ))}
         </ColorBar>
       </RightBox>
@@ -88,7 +88,7 @@ const ColorBar = styled.div`
   animation: ${grow} 1s ease-in-out;
 `;
 
-const ColorSegment = styled.div<{ color: string; flex: number }>`
+const ColorSegment = styled.div<{ color: string; $flex: number }>`
   background-color: ${({ color }) => color};
-  width: ${({ flex }) => flex * 100}%;
+  width: ${({ $flex }) => $flex * 100}%;
 `;

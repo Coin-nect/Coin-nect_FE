@@ -25,27 +25,27 @@ const BottomNav = () => {
     <Wrapper>
       <NavBar>
         <NavItem
-          active={activeTab === 'home'}
+          $active={activeTab === 'home'}
           onClick={() => handleNavClick('home', '/home')}
         >
           <FiHome size={24} />홈
         </NavItem>
         <NavItem
-          active={activeTab === 'budget'}
+          $active={activeTab === 'budget'}
           onClick={() => handleNavClick('budget', '/budget')}
         >
           <LuChartLine size={24} />
           예산관리
         </NavItem>
         <NavItem
-          active={activeTab === 'stats'}
+          $active={activeTab === 'stats'}
           onClick={() => handleNavClick('stats', '/stats')}
         >
           <FiPieChart size={24} />
           통계
         </NavItem>
         <NavItem
-          active={activeTab === 'mypage'}
+          $active={activeTab === 'mypage'}
           onClick={() => handleNavClick('mypage', '/mypage')}
         >
           <FiUser size={24} />
@@ -80,13 +80,13 @@ const NavBar = styled.nav`
   box-sizing: border-box;
 `;
 
-const NavItem = styled.div<{ active: boolean }>`
+const NavItem = styled.div<{ $active: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
   color: ${props =>
-    props.active ? COMMON_COLORS.main : COMMON_COLORS.dark_gray};
+    props.$active ? COMMON_COLORS.main : COMMON_COLORS.dark_gray};
   font-size: 0.5rem;
   font-weight: bold;
   gap: 5px;

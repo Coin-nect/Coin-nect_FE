@@ -61,10 +61,10 @@ const ViewIncomeExpense = () => {
       />
       <ContentContainer>
         <ButtonGroup>
-          <TypeButton active={isIncome} colorType="blue" disabled>
+          <TypeButton $active={isIncome} $colorType="blue" disabled>
             수입
           </TypeButton>
-          <TypeButton active={!isIncome} colorType="red" disabled>
+          <TypeButton $active={!isIncome} $colorType="red" disabled>
             지출
           </TypeButton>
         </ButtonGroup>
@@ -114,17 +114,21 @@ const ButtonGroup = styled.div`
 `;
 
 const TypeButton = styled.button<{
-  active: boolean;
-  colorType: 'blue' | 'red';
+  $active: boolean;
+  $colorType: 'blue' | 'red';
 }>`
   flex: 1;
   padding: 1rem;
   border: 2px solid
-    ${({ active, colorType }) =>
-      active ? (colorType === 'blue' ? COLORS.blue : COLORS.red) : COLORS.gray};
+    ${({ $active, $colorType }) =>
+      $active
+        ? $colorType === 'blue'
+          ? COLORS.blue
+          : COLORS.red
+        : COLORS.gray};
   background-color: #fff;
-  color: ${({ active, colorType }) =>
-    active ? (colorType === 'blue' ? COLORS.blue : COLORS.red) : COLORS.gray};
+  color: ${({ $active, $colorType }) =>
+    $active ? ($colorType === 'blue' ? COLORS.blue : COLORS.red) : COLORS.gray};
   border-radius: 0.8rem;
   font-weight: bold;
   font-size: 1rem;
