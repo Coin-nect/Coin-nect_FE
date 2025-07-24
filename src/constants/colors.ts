@@ -33,4 +33,15 @@ const FONT_COLORS = {
   placeholder: COLORS.light_gray,
 };
 
-export { COLORS, COMMON_COLORS, FONT_COLORS };
+const CHART_COLORS = [
+  '#E93E8C',
+  '#3498DB',
+  '#29A744',
+  '#FFC107',
+  '#FD7E15',
+  '#9653BE',
+  '#DC3546',
+  '#6C757E',
+];
+
+export { COLORS, COMMON_COLORS, FONT_COLORS, CHART_COLORS };

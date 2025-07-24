@@ -1,9 +1,8 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useMemo, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import {
-  CalendarHeader,
-  BottomNav,
+  BackHeader,
   ContentContainer,
   StatsPie,
   CategoryItem,
@@ -30,11 +29,10 @@ const sortedPieData = [...rawPieData]
     color: CHART_COLORS[index % CHART_COLORS.length],
   }));
 
-const Stats = () => {
+const AnalysisDetail = () => {
   const navigate = useNavigate();
-  const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
+  const { date } = useParams();
   const selectedData = sortedPieData.find(cat => cat.name === selectedCategory);
 
   const getCategoryIcon = (label: string, color: string, size = 24) => {
@@ -42,23 +40,15 @@ const Stats = () => {
     return cat ? cat.icon(color, size) : null;
   };
 
-  // 현재 연월 기준 데이터 필터
-  const currentYearMonth = `${currentDate.getFullYear()}.${String(currentDate.getMonth() + 1).padStart(2, '0')}`;
-  const filteredData = transactionData.filter(
-    day => day.yearMonth === currentYearMonth,
-  );
+  const filteredData = useMemo(() => {
+    return transactionData.filter(day => day.yearMonth === date);
+  }, [date]);
 
   return (
     <Container>
-      <CalendarHeader
-        showLeftIcon={false}
-        showRightIcon={false}
-        currentDate={currentDate}
-        setCurrentDate={setCurrentDate}
-        onClick={() => navigate('/analysis')}
-        type="stats"
-      />
-      <StatsSummary income={1000000} expense={1000000} variant="default" />
+      <BackHeader title={date ?? '분석 상세'} showIcon={false} />
+      <StatsSummary income={1000000} expense={1000000} variant="white" />
+
       <ContentContainer>
         <StatsPie
           data={sortedPieData}
@@ -139,12 +129,11 @@ const Stats = () => {
           )}
         </ListContainer>
       </ContentContainer>
-      <BottomNav />
     </Container>
   );
 };
 
-export default Stats;
+export default AnalysisDetail;
 
 const Container = styled.div`
   display: flex;

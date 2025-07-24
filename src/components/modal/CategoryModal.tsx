@@ -1,29 +1,7 @@
 import styled from 'styled-components';
 import Modal from '@components/common/Modal';
-import {
-  FaUtensils,
-  FaShoppingBag,
-  FaHeartbeat,
-  FaBus,
-  FaGift,
-  FaEllipsisH,
-  FaStore,
-  FaGlassCheers,
-  FaHome,
-  FaMusic,
-  FaPlane,
-  FaPen,
-  FaUsers,
-  FaDollarSign,
-  FaUserCog,
-  FaMoneyCheckAlt,
-  FaWallet,
-  FaPiggyBank,
-  FaMedal,
-  FaExchangeAlt,
-  FaChartLine,
-} from 'react-icons/fa';
 import { COLORS, COMMON_COLORS } from '@constants/colors';
+import { categories } from '@constants/categories';
 
 interface CategoryModalProps {
   isVisible: boolean;
@@ -37,31 +15,6 @@ const CategoryModal = ({
   onClose,
   onSelect,
 }: CategoryModalProps) => {
-  const categories = [
-    { icon: <FaUtensils />, label: '식비' },
-    { icon: <FaStore />, label: '마트/편의점' },
-    { icon: <FaHeartbeat />, label: '의료/건강' },
-    { icon: <FaGlassCheers />, label: '술/유흥' },
-    { icon: <FaShoppingBag />, label: '미용/쇼핑' },
-    { icon: <FaBus />, label: '교통' },
-    { icon: <FaHome />, label: '주거/통신' },
-    { icon: <FaShoppingBag />, label: '생활품' },
-    { icon: <FaMusic />, label: '문화/여가' },
-    { icon: <FaPlane />, label: '여행/숙박' },
-    { icon: <FaPen />, label: '교육' },
-    { icon: <FaUsers />, label: '경조사' },
-    { icon: <FaDollarSign />, label: '금융' },
-    { icon: <FaUserCog />, label: '자기계발' },
-    { icon: <FaGift />, label: '선물' },
-    { icon: <FaMoneyCheckAlt />, label: '월급' },
-    { icon: <FaWallet />, label: '용돈' },
-    { icon: <FaPiggyBank />, label: '이자/배당금' },
-    { icon: <FaMedal />, label: '상여금' },
-    { icon: <FaExchangeAlt />, label: '이월' },
-    { icon: <FaChartLine />, label: '투자' },
-    { icon: <FaEllipsisH />, label: '기타' },
-  ];
-
   return (
     <Modal isVisible={isVisible} onClose={onClose}>
       <ModalContent>
@@ -69,7 +22,7 @@ const CategoryModal = ({
         <CategoryList>
           {categories.map((cat, idx) => (
             <CategoryItem key={idx} onClick={() => onSelect(cat.label)}>
-              <IconCircle>{cat.icon}</IconCircle>
+              <IconCircle>{cat.icon('white', 18)}</IconCircle>
               <Label>{cat.label}</Label>
             </CategoryItem>
           ))}

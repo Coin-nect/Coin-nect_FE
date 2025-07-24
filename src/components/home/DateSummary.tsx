@@ -7,6 +7,7 @@ interface DateSummaryProps {
   dayOfWeek: string; // 수요일
   income: number; // 30000
   expense: number; // 78000
+  showAmount?: boolean;
 }
 
 const DateSummary = ({
@@ -15,6 +16,7 @@ const DateSummary = ({
   dayOfWeek,
   income,
   expense,
+  showAmount = true,
 }: DateSummaryProps) => {
   return (
     <SummaryContainer>
@@ -25,10 +27,12 @@ const DateSummary = ({
           <DayText>{dayOfWeek}</DayText>
         </DateTextWrapper>
       </DateLeft>
-      <AmountContainer>
-        <IncomeText>+ {income.toLocaleString()}</IncomeText>
-        <ExpenseText>- {expense.toLocaleString()}</ExpenseText>
-      </AmountContainer>
+      {showAmount && (
+        <AmountContainer>
+          <IncomeText>+ {income.toLocaleString()}</IncomeText>
+          <ExpenseText>- {expense.toLocaleString()}</ExpenseText>
+        </AmountContainer>
+      )}
     </SummaryContainer>
   );
 };
