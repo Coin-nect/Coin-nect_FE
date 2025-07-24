@@ -58,6 +58,7 @@ const ChartContainer = styled.div`
   position: relative;
   width: 260px;
   height: 260px;
+  box-sizing: border-box;
   svg {
     outline: none;
   }

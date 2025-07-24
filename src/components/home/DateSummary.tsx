@@ -44,7 +44,7 @@ const SummaryContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0.8rem 1rem;
   box-sizing: border-box;
 `;
 

@@ -35,12 +35,15 @@ const StatsSummary = ({
 export default StatsSummary;
 
 const Container = styled.div<{ isWhite: boolean }>`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   background-color: ${({ isWhite }) =>
     isWhite ? COLORS.white : COMMON_COLORS.main};
   padding: 1rem;
   border-bottom: ${({ isWhite }) => (isWhite ? '1px solid #d9d9d9' : 'none')};
+  box-sizing: border-box;
+  margin-top: 3.7rem;
 `;
 
 const Box = styled.div`

@@ -51,7 +51,7 @@ const ItemContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 1rem;
   cursor: pointer;
 `;
 
