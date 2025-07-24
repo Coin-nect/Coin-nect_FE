@@ -8,9 +8,15 @@ interface HeaderProps {
   title: string;
   showIcon?: boolean;
   onClick?: () => void;
+  iconRef?: React.RefObject<HTMLDivElement>;
 }
 
-const BackHeader = ({ title, showIcon = true, onClick }: HeaderProps) => {
+const BackHeader = ({
+  title,
+  showIcon = true,
+  onClick,
+  iconRef,
+}: HeaderProps) => {
   const navigate = useNavigate();
   const handleBack = () => {
     navigate(-1);
@@ -24,11 +30,11 @@ const BackHeader = ({ title, showIcon = true, onClick }: HeaderProps) => {
         style={{ cursor: 'pointer', marginLeft: '1rem' }}
       />
       <Title>{title}</Title>
-      <IconWrapper onClick={onClick}>
+      <IconWrapper onClick={onClick} ref={iconRef}>
         {showIcon ? (
           <SlOptionsVertical
             color={COMMON_COLORS.main}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer', pointerEvents: 'auto' }}
           />
         ) : null}
       </IconWrapper>

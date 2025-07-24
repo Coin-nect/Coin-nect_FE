@@ -7,16 +7,23 @@ interface MenuModalProps {
   onEdit: () => void;
   onDelete: () => void;
   onClose: () => void;
+  excludeRef?: React.RefObject<HTMLElement>;
 }
 
-const MenuModal = ({ onEdit, onDelete, onClose }: MenuModalProps) => {
+const MenuModal = ({
+  onEdit,
+  onDelete,
+  onClose,
+  excludeRef,
+}: MenuModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         modalRef.current &&
-        !modalRef.current.contains(event.target as Node)
+        !modalRef.current.contains(event.target as Node) &&
+        !excludeRef?.current?.contains(event.target as Node)
       ) {
         onClose();
       }
@@ -45,7 +52,7 @@ export default MenuModal;
 
 const MenuContainer = styled.div`
   position: absolute;
-  top: 48px;
+  top: 62px;
   right: 16px;
   background-color: ${COLORS.white};
   border: 1px solid ${COLORS.gray};

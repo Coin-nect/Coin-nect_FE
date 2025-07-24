@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { COLORS } from '@constants/colors';
@@ -10,6 +10,7 @@ import { getDayOfWeek } from '@utils/dayofweek';
 
 const ViewIncomeExpense = () => {
   const navigate = useNavigate();
+  const menuIconRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [checkModalOpen, setCheckModalOpen] = useState(false);
 
@@ -25,6 +26,8 @@ const ViewIncomeExpense = () => {
   };
 
   const isIncome = data.type === '수입';
+
+  const toggleMenu = () => setMenuOpen(prev => !prev);
 
   const handleEdit = () => {
     navigate('/form', { state: { id: data.id } });
@@ -44,13 +47,15 @@ const ViewIncomeExpense = () => {
       <BackHeader
         title="수입/지출"
         showIcon={true}
-        onClick={() => setMenuOpen(!menuOpen)}
+        onClick={toggleMenu}
+        iconRef={menuIconRef}
       />
       {menuOpen && (
         <MenuModal
           onEdit={handleEdit}
           onDelete={handleDelete}
           onClose={() => setMenuOpen(false)}
+          excludeRef={menuIconRef}
         />
       )}
       <CheckModal
