@@ -83,6 +83,7 @@ const ContentContainer = styled.div`
   padding: 1rem 0;
   overflow-y: auto;
   box-sizing: border-box;
+  margin-top: 60px;
   margin-bottom: 70px;
 
   &::-webkit-scrollbar {

@@ -39,8 +39,15 @@ const BackHeader = ({ title, showIcon = true, onClick }: HeaderProps) => {
 export default BackHeader;
 
 const HeaderContainer = styled.header`
-  display: flex;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
+  max-width: 425px;
+  z-index: 10;
+
+  display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
