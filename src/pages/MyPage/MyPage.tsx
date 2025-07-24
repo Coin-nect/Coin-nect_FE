@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import {
   DefaultHeader,
@@ -7,6 +7,7 @@ import {
   Button,
   ProfileInfo,
   ContentContainer,
+  Message,
 } from '@components/index';
 import CheckModal from '@components/modal/CheckModal';
 
@@ -16,6 +17,14 @@ const MyPage = () => {
     'withdrawal',
   );
   const navigate = useNavigate();
+  const location = useLocation();
+  const [showMessage, setShowMessage] = useState(false);
+
+  useEffect(() => {
+    if (location.state?.showMessage) {
+      setShowMessage(true);
+    }
+  }, [location.state]);
 
   const openModal = (type: 'logout' | 'withdrawal') => {
     setModalType(type);
@@ -31,6 +40,8 @@ const MyPage = () => {
   return (
     <Container>
       <DefaultHeader title="마이페이지" showIcon={false} />
+      {showMessage && <Message text="프로필이 저장되었습니다." />}
+
       <ContentContainer navMargin={true}>
         <ProfileInfo
           user_image=""

@@ -6,12 +6,13 @@ import {
   BottomNav,
   StatusTag,
   ContentContainer,
+  BlurBox,
+  BudgetBar,
+  BudgetLine,
+  Message,
 } from '@components/index';
-import { BlurBox } from '@components/common/index';
 import { COLORS } from '@constants/colors';
 import statusMap from '@constants/statusMap';
-import { BudgetBar, BudgetLine } from '@components/charts/index';
-import Message from '@components/common/Message';
 
 const status = 'warning';
 

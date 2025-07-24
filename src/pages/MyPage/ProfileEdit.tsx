@@ -89,7 +89,7 @@ const ProfileEdit = () => {
         Object.entries(formData).map(([key, { value }]) => [key, value]),
       );
       console.log('Form submitted:', formValues);
-      navigate('/mypage', { replace: true });
+      navigate('/mypage', { replace: true, state: { showMessage: true } });
     } else {
       console.log('Validation failed:', validationErrors);
     }

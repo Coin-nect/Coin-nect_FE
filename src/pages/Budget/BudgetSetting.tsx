@@ -1,18 +1,12 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import {
-  BackHeader,
-  Button,
-  ContentContainer,
-  Message,
-} from '@components/index';
+import { BackHeader, Button, ContentContainer } from '@components/index';
 import { COLORS, COMMON_COLORS } from '@constants/colors';
 
 const BudgetSetting = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState('');
-  const [showMessage, setShowMessage] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value.replace(/[^0-9]/g, '');
@@ -22,7 +16,6 @@ const BudgetSetting = () => {
 
   const handleSubmit = () => {
     if (inputValue.trim()) {
-      setShowMessage(true);
       navigate('/budget', { replace: true, state: { showMessage: true } });
     }
   };
@@ -63,7 +56,6 @@ const BudgetSetting = () => {
           txtColor={COLORS.black}
           onClick={handleSubmit}
         />
-        {showMessage && <Message text="예산이 저장되었습니다." />}
       </ContentContainer>
     </Container>
   );
