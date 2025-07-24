@@ -78,10 +78,11 @@ const ButtonContainer = styled.button<{ bgColor?: string; txtColor?: string }>`
 
   &.modalBtn {
     width: 100%;
+    min-width: 100px;
     background-color: ${({ bgColor }) => bgColor || COLORS.gray};
     color: ${FONT_COLORS.white};
     border-radius: 0.5rem;
-    padding: 0.8rem 0;
+    padding: 0.5rem 0;
     font-size: 0.8rem;
   }
 
