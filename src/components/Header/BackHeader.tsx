@@ -18,26 +18,17 @@ const BackHeader = ({
   iconRef,
 }: HeaderProps) => {
   const navigate = useNavigate();
-  const handleBack = () => {
-    navigate(-1);
-  };
+  const handleBack = () => navigate(-1);
+
   return (
     <HeaderContainer>
-      <IoArrowBackOutline
-        color={COMMON_COLORS.main}
-        size={24}
-        onClick={handleBack}
-        style={{ cursor: 'pointer', marginLeft: '1rem' }}
-      />
+      <BackIcon color={COMMON_COLORS.main} size={24} onClick={handleBack} />
       <Title>{title}</Title>
-      <IconWrapper onClick={onClick} ref={iconRef}>
-        {showIcon ? (
-          <SlOptionsVertical
-            color={COMMON_COLORS.main}
-            style={{ cursor: 'pointer', pointerEvents: 'auto' }}
-          />
-        ) : null}
-      </IconWrapper>
+      {showIcon && (
+        <IconWrapper onClick={onClick} ref={iconRef}>
+          <SlOptionsVertical color={COMMON_COLORS.main} />
+        </IconWrapper>
+      )}
     </HeaderContainer>
   );
 };
@@ -55,7 +46,7 @@ const HeaderContainer = styled.header`
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1rem 0;
   background-color: ${COLORS.white};
   border-bottom: 1.5px solid ${COMMON_COLORS.main};
@@ -63,16 +54,26 @@ const HeaderContainer = styled.header`
 `;
 
 const Title = styled.div`
+  display: flex;
+  text-align: center;
   font-size: 1.2rem;
   font-weight: bold;
   color: ${COMMON_COLORS.main};
 `;
 
+const BackIcon = styled(IoArrowBackOutline)`
+  position: absolute;
+  left: 1rem;
+  cursor: pointer;
+`;
+
 const IconWrapper = styled.div`
+  position: absolute;
+  right: 1rem;
   width: 24px;
   height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 1rem;
+  cursor: pointer;
 `;
