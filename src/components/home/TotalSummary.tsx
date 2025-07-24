@@ -10,10 +10,10 @@ interface TotalSummaryProps {
 const TotalSummary = ({ total, income, spending }: TotalSummaryProps) => {
   return (
     <SummaryContainer>
-      <TotalText>Total : ₩ {total.toLocaleString()}</TotalText>
+      <TotalText>₩ {total.toLocaleString()}</TotalText>
       <Row>
-        <IncomeText>Income : ₩ {income.toLocaleString()}</IncomeText>
-        <SpendingText>Spending : ₩ {spending.toLocaleString()}</SpendingText>
+        <IncomeText>수입 : ₩ {income.toLocaleString()}</IncomeText>
+        <SpendingText>지출 : ₩ {spending.toLocaleString()}</SpendingText>
       </Row>
     </SummaryContainer>
   );
@@ -37,8 +37,7 @@ const TotalText = styled.div`
 
 const Row = styled.div`
   display: flex;
-  justify-content: space-between;
-  gap: 1.5rem;
+  gap: 5em;
   margin-top: 0.5rem;
 `;
 

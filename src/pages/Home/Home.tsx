@@ -80,7 +80,7 @@ const ContentContainer = styled.div`
   align-items: center;
   height: 100%;
   gap: 1rem;
-  padding: 2.6rem 0;
+  padding: 1rem 0;
   overflow-y: auto;
   box-sizing: border-box;
   margin-bottom: 70px;
