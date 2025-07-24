@@ -46,6 +46,7 @@ const HeaderContainer = styled.header`
   padding: 1rem 0;
   background-color: ${COLORS.white};
   border-bottom: 1.5px solid ${COMMON_COLORS.main};
+  box-sizing: border-box;
 `;
 
 const Title = styled.div`

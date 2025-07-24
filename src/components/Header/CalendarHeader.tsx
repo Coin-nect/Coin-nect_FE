@@ -169,6 +169,7 @@ const HeaderContainer = styled.header`
   padding: 1rem 0;
   background-color: ${COMMON_COLORS.main};
   border: none;
+  box-sizing: border-box;
 `;
 
 const DateContainer = styled.div`
