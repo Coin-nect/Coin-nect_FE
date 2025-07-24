@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { CalendarHeader, BottomNav, ContentContainer } from '@components/index';
+import { CalendarHeader, BottomNav } from '@components/index';
 import CalendarSection from './CalendarSection';
 import TotalSummary from '@components/home/TotalSummary';
 import PlusBtn from '@components/home/PlusBtn';
@@ -52,7 +52,7 @@ const Home = () => {
         onClick={() => navigate('/search')}
       />
       {showMessage && <Message text="저장되었습니다." />}
-      <ContentContainer style={{ padding: '0', margin: '1rem 0' }}>
+      <ContentContainer>
         <TotalSummary total={100000000} income={640000} spending={91000} />
         {isList ? (
           <ListSection currentDate={currentDate} />
@@ -72,4 +72,20 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+`;
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  gap: 1rem;
+  padding: 2.6rem 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+  margin-bottom: 70px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;

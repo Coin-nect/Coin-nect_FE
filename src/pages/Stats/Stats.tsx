@@ -59,7 +59,7 @@ const Stats = () => {
         type="stats"
       />
       <StatsSummary income={1000000} expense={1000000} variant="default" />
-      <ContentContainer>
+      <ContentContainer navMargin={true}>
         <StatsPie
           data={sortedPieData}
           onSelect={setSelectedCategory}

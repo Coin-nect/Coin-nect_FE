@@ -31,7 +31,7 @@ const MyPage = () => {
   return (
     <Container>
       <DefaultHeader title="마이페이지" showIcon={false} />
-      <ContentContainer>
+      <ContentContainer navMargin={true}>
         <ProfileInfo
           user_image=""
           name_k=""

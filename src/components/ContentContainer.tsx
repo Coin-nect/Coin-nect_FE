@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
-const ContentContainer = styled.div`
+interface ContentContainerProps {
+  navMargin?: boolean;
+}
+
+const ContentContainer = styled.div.withConfig({
+  shouldForwardProp: prop => prop !== 'navMargin',
+})<ContentContainerProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,6 +15,7 @@ const ContentContainer = styled.div`
   padding: 2.6rem 1.2rem;
   overflow-y: auto;
   box-sizing: border-box;
+  margin-bottom: ${({ navMargin }) => (navMargin ? '70px' : '0')};
 
   &::-webkit-scrollbar {
     display: none;

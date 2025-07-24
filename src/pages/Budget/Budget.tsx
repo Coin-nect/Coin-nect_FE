@@ -35,7 +35,7 @@ const Budget = () => {
       />
       {showMessage && <Message text="예산이 저장되었습니다." />}
 
-      <ContentContainer>
+      <ContentContainer navMargin={true}>
         <Section>
           <Text>00월</Text>
           <Text>총금액: 500,000원</Text>
