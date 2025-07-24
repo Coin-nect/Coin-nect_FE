@@ -24,14 +24,21 @@ const DefaultHeader = ({ title, showIcon = true, onSetting }: HeaderProps) => {
 export default DefaultHeader;
 
 const HeaderContainer = styled.header`
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 425px;
+  z-index: 10;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  width: 100%;
   padding: 1rem 0;
   background-color: ${COMMON_COLORS.main};
   border: none;
+  box-sizing: border-box;
 `;
 
 const Title = styled.div`

@@ -55,10 +55,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0.5rem 0;
-  background-color: rgba(217, 217, 217, 0.8);
+  background-color: ${COLORS.dark_gray};
   border-radius: 0.8rem;
   position: fixed;
-  bottom: 3rem;
+  bottom: 6rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;

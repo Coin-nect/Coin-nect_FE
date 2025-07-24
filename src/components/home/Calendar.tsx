@@ -77,7 +77,7 @@ const Calendar = ({ data = [], currentDate, onSelectDate }: CalendarProps) => {
     rows.push(cells.slice(i, i + 7));
   }
 
-  const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
 
   const handleSelect = (cell: DayData) => {
     setSelectedDay(cell.date);
@@ -88,7 +88,7 @@ const Calendar = ({ data = [], currentDate, onSelectDate }: CalendarProps) => {
     <CalendarContainer>
       <WeekRow>
         {weekDays.map(day => (
-          <WeekDay key={day} day={day}>
+          <WeekDay key={day} $day={day}>
             {day}
           </WeekDay>
         ))}
@@ -149,14 +149,15 @@ const WeekRow = styled.div`
   display: flex;
 `;
 
-const WeekDay = styled.div<{ day: string }>`
+const WeekDay = styled.div<{ $day: string }>`
   flex: 1;
   text-align: center;
   padding: 6px 0;
-  color: ${({ day }) =>
-    day === 'Sun'
+  color: ${({ $day }) =>
+    $day === '일'
       ? COLORS.red
-      : day === 'Sat'
+      : $day === '토'
         ? COLORS.blue
         : COLORS.dark_gray};
+  font-size: 0.8rem;
 `;

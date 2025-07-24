@@ -55,6 +55,8 @@ const Container = styled.div`
   border-radius: 1.5rem;
   padding: 1rem;
   outline: none;
+  box-sizing: border-box;
+
   svg {
     outline: none;
   }

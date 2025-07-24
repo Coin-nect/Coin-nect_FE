@@ -15,7 +15,7 @@ const StatsSummary = ({
   const isWhite = variant === 'white';
 
   return (
-    <Container isWhite={isWhite}>
+    <Container $isWhite={isWhite}>
       <Box>
         <Label color={isWhite ? COLORS.black : COLORS.black}>지출</Label>
         <Amount color={isWhite ? COLORS.black : COLORS.black}>
@@ -34,13 +34,16 @@ const StatsSummary = ({
 
 export default StatsSummary;
 
-const Container = styled.div<{ isWhite: boolean }>`
+const Container = styled.div<{ $isWhite: boolean }>`
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: ${({ isWhite }) =>
-    isWhite ? COLORS.white : COMMON_COLORS.main};
+  background-color: ${({ $isWhite }) =>
+    $isWhite ? COLORS.white : COMMON_COLORS.main};
   padding: 1rem;
-  border-bottom: ${({ isWhite }) => (isWhite ? '1px solid #d9d9d9' : 'none')};
+  border-bottom: ${({ $isWhite }) => ($isWhite ? '1px solid #d9d9d9' : 'none')};
+  box-sizing: border-box;
+  margin-top: 3.7rem;
 `;
 
 const Box = styled.div`

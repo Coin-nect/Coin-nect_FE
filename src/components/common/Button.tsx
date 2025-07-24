@@ -39,8 +39,8 @@ const Button = ({
       onClick={onClick}
       disabled={isDisabled}
       style={style}
-      bgColor={bgColor}
-      txtColor={txtColor}
+      $bgColor={bgColor}
+      $txtColor={txtColor}
     >
       {buttonText}
     </ButtonContainer>
@@ -49,7 +49,10 @@ const Button = ({
 
 export default Button;
 
-const ButtonContainer = styled.button<{ bgColor?: string; txtColor?: string }>`
+const ButtonContainer = styled.button<{
+  $bgColor?: string;
+  $txtColor?: string;
+}>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,16 +81,17 @@ const ButtonContainer = styled.button<{ bgColor?: string; txtColor?: string }>`
 
   &.modalBtn {
     width: 100%;
-    background-color: ${({ bgColor }) => bgColor || COLORS.gray};
+    min-width: 100px;
+    background-color: ${({ $bgColor }) => $bgColor || COLORS.gray};
     color: ${FONT_COLORS.white};
     border-radius: 0.5rem;
-    padding: 0.8rem 0;
+    padding: 0.5rem 0;
     font-size: 0.8rem;
   }
 
   &.saveBtn {
-    background-color: ${({ bgColor }) => bgColor || COMMON_COLORS.main};
-    color: ${({ txtColor }) => txtColor || FONT_COLORS.white};
+    background-color: ${({ $bgColor }) => $bgColor || COMMON_COLORS.main};
+    color: ${({ $txtColor }) => $txtColor || FONT_COLORS.white};
     border-radius: 2rem;
     width: 30%;
     padding: 0.8rem 0;

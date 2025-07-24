@@ -53,6 +53,7 @@ export const InputBox = styled.input`
   border: none;
   outline: none;
   width: 100%;
+  box-sizing: border-box;
 
   &:focus {
     outline: none;

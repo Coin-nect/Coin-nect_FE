@@ -70,4 +70,7 @@ const Container = styled.div`
 
   // 텍스트 클릭 방지
   user-select: none;
+
+  // 탭 하이라이트 제거
+  -webkit-tap-highlight-color: transparent;
 `;

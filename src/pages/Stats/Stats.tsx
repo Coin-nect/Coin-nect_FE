@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import {
   CalendarHeader,
   BottomNav,
-  ContentContainer,
   StatsPie,
   CategoryItem,
   DateSummary,
@@ -152,9 +151,26 @@ const Container = styled.div`
   width: 100%;
 `;
 
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  gap: 1rem;
+  padding: 1rem 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+  margin-bottom: 60px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 const ListContainer = styled.div`
   width: 100%;
   padding: 1rem;
+  box-sizing: border-box;
 `;
 
 const DayContainer = styled.div`

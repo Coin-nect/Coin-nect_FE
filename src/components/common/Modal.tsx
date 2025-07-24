@@ -26,7 +26,7 @@ const Modal = ({ isVisible, onClose, children }: ModalProps) => {
   };
 
   return (
-    <ModalBackdrop isVisible={isVisible} onClick={handleBackdropClick}>
+    <ModalBackdrop $isVisible={isVisible} onClick={handleBackdropClick}>
       <ModalWrapper onClick={handleContentClick}>{children}</ModalWrapper>
     </ModalBackdrop>
   );
@@ -34,10 +34,10 @@ const Modal = ({ isVisible, onClose, children }: ModalProps) => {
 
 export default Modal;
 
-const ModalBackdrop = styled.div.attrs<{ isVisible: boolean }>(
-  ({ isVisible }) => ({
+const ModalBackdrop = styled.div.attrs<{ $isVisible: boolean }>(
+  ({ $isVisible }) => ({
     style: {
-      display: isVisible ? 'flex' : 'none',
+      display: $isVisible ? 'flex' : 'none',
     },
   }),
 )`

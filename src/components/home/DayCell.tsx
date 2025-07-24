@@ -28,15 +28,15 @@ const DayCell = ({
 }: DayCellProps) => {
   return (
     <CellContainer
-      isNextMonth={isNextMonth}
-      isPrevMonth={isPrevMonth}
+      $isNextMonth={isNextMonth}
+      $isPrevMonth={isPrevMonth}
       onClick={!isNextMonth && !isPrevMonth ? onClick : undefined}
     >
       <DayCircle
-        isToday={isToday}
-        isSelected={isSelected}
-        isTodayAndNotSelected={isTodayAndNotSelected}
-        weekIndex={weekIndex}
+        $isToday={isToday}
+        $isSelected={isSelected}
+        $isTodayAndNotSelected={isTodayAndNotSelected}
+        $weekIndex={weekIndex}
       >
         {day}
       </DayCircle>
@@ -57,19 +57,19 @@ const DayCell = ({
 export default DayCell;
 
 const CellContainer = styled.div<{
-  isNextMonth?: boolean;
-  isPrevMonth?: boolean;
+  $isNextMonth?: boolean;
+  $isPrevMonth?: boolean;
 }>`
   flex: 1;
   min-height: 60px;
   border-top: 1px solid #eee;
   border-left: 1px solid #eee;
-  background-color: ${({ isNextMonth, isPrevMonth }) =>
-    isNextMonth || isPrevMonth ? '#F8F8F8' : 'transparent'};
+  background-color: ${({ $isNextMonth, $isPrevMonth }) =>
+    $isNextMonth || $isPrevMonth ? '#F8F8F8' : 'transparent'};
   position: relative;
   box-sizing: border-box;
-  cursor: ${({ isNextMonth, isPrevMonth }) =>
-    isNextMonth || isPrevMonth ? 'default' : 'pointer'};
+  cursor: ${({ $isNextMonth, $isPrevMonth }) =>
+    $isNextMonth || $isPrevMonth ? 'default' : 'pointer'};
 
   &:last-child {
     border-right: 1px solid #eee;
@@ -77,30 +77,31 @@ const CellContainer = styled.div<{
 `;
 
 const DayCircle = styled.div<{
-  isToday?: boolean;
-  isSelected?: boolean;
-  isTodayAndNotSelected?: boolean;
-  weekIndex: number;
+  $isToday?: boolean;
+  $isSelected?: boolean;
+  $isTodayAndNotSelected?: boolean;
+  $weekIndex: number;
 }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ isSelected }) =>
-    isSelected ? COMMON_COLORS.main : 'transparent'};
-  color: ${({ isSelected, weekIndex }) =>
-    isSelected
+  background-color: ${({ $isSelected }) =>
+    $isSelected ? COMMON_COLORS.main : 'transparent'};
+  color: ${({ $isSelected, $weekIndex }) =>
+    $isSelected
       ? 'white'
-      : weekIndex === 0
+      : $weekIndex === 0
         ? COLORS.red
-        : weekIndex === 6
+        : $weekIndex === 6
           ? COLORS.blue
           : COLORS.dark_blue};
-  border: ${({ isTodayAndNotSelected }) =>
-    isTodayAndNotSelected ? `1px solid ${COMMON_COLORS.main}` : 'none'};
+  border: ${({ $isTodayAndNotSelected }) =>
+    $isTodayAndNotSelected ? `1px solid ${COMMON_COLORS.main}` : 'none'};
   border-radius: 0.2rem;
-  width: 14px;
-  height: 14px;
-  font-size: 0.6rem;
+  width: 22px;
+  height: 20px;
+  line-height: 22px;
+  font-size: 0.8rem;
   margin-top: 2px;
   margin-left: 2px;
   box-sizing: border-box;
@@ -116,15 +117,15 @@ const AmountWrapper = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding: 0.5rem 0;
+  margin: 0.3rem;
 `;
 
 const IncomeText = styled.div`
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   color: ${COLORS.blue};
 `;
 
 const ExpenseText = styled.div`
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   color: ${COLORS.red};
 `;

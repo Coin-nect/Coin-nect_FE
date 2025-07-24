@@ -6,12 +6,13 @@ import {
   BottomNav,
   StatusTag,
   ContentContainer,
+  BlurBox,
+  BudgetBar,
+  BudgetLine,
+  Message,
 } from '@components/index';
-import { BlurBox } from '@components/common/index';
 import { COLORS } from '@constants/colors';
 import statusMap from '@constants/statusMap';
-import { BudgetBar, BudgetLine } from '@components/charts/index';
-import Message from '@components/common/Message';
 
 const status = 'warning';
 
@@ -35,7 +36,7 @@ const Budget = () => {
       />
       {showMessage && <Message text="예산이 저장되었습니다." />}
 
-      <ContentContainer>
+      <ContentContainer navMargin={true}>
         <Section>
           <Text>00월</Text>
           <Text>총금액: 500,000원</Text>

@@ -18,8 +18,10 @@ export default PlusBtn;
 
 const Button = styled.button`
   position: fixed;
-  bottom: 5rem;
-  right: calc(50% - 180px);
+  bottom: 7rem;
+  right: 50%;
+  transform: translateX(190px);
+
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -31,4 +33,8 @@ const Button = styled.button`
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   z-index: 50;
+
+  @media (max-width: 400px) {
+    transform: translateX(160px);
+  }
 `;
