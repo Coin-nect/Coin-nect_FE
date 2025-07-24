@@ -98,9 +98,10 @@ const DayCircle = styled.div<{
   border: ${({ isTodayAndNotSelected }) =>
     isTodayAndNotSelected ? `1px solid ${COMMON_COLORS.main}` : 'none'};
   border-radius: 0.2rem;
-  width: 14px;
-  height: 14px;
-  font-size: 0.6rem;
+  width: 22px;
+  height: 20px;
+  line-height: 22px;
+  font-size: 0.8rem;
   margin-top: 2px;
   margin-left: 2px;
   box-sizing: border-box;
@@ -116,15 +117,15 @@ const AmountWrapper = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding: 0.5rem 0;
+  margin: 0.3rem;
 `;
 
 const IncomeText = styled.div`
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   color: ${COLORS.blue};
 `;
 
 const ExpenseText = styled.div`
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   color: ${COLORS.red};
 `;
