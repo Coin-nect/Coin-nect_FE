@@ -2,6 +2,7 @@ export * from './common/index';
 export * from './Header/index';
 export * from './charts/index';
 export * from './home/index';
+export * from './modal/index';
 export { default as BottomNav } from './BottomNav';
 export { default as ContentContainer } from './ContentContainer';
 export { default as ProfileImage } from './ProfileImage';
