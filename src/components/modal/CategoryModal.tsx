@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Modal from '@components/common/Modal';
+import { Modal } from '@components/index';
 import { COLORS, COMMON_COLORS } from '@constants/colors';
 import { categories } from '@constants/categories';
 

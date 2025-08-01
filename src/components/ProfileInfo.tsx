@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '@constants/colors';
-import { BlurBox } from './common';
-import ProfileImage from './ProfileImage';
+import { BlurBox, ProfileImage } from '@components/index';
 
 interface ProfileProps {
   user_image: string;

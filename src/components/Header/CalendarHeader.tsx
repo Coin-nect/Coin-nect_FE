@@ -6,7 +6,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { FaList } from 'react-icons/fa6';
 import { IoCalendarNumber, IoSearch } from 'react-icons/io5';
 import { BsBarChartFill } from 'react-icons/bs';
-import CustomDatePicker from '@components/CustomDatePicker';
+import { CustomDatePicker } from '@components/index';
 
 type PickerMode = 'year' | 'month' | 'range';
 type PickerType = 'home' | 'stats';

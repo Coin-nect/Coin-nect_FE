@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import DateSummary from '@components/home/DateSummary';
-import TransactionItem from '@components/home/TransactionItem';
+import { DateSummary, TransactionItem } from '@components/index';
 import { transactionData } from '@constants/dummy';
 import { COLORS } from '@constants/colors';
 

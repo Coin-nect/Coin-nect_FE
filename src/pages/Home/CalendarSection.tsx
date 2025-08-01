@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Calendar, DateSummary, TransactionItem } from '@components/home/index';
+import { Calendar, DateSummary, TransactionItem } from '@components/index';
 import { GrMoney } from 'react-icons/gr';
 import { COLORS } from '@constants/colors';
 import { transactionData, DayData } from '@constants/dummy';

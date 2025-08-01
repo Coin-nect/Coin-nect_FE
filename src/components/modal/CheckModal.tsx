@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import Modal from '@components/common/Modal';
-import Button from '@components/common/Button';
+import { Modal, Button } from '@components/index';
 import { COMMON_COLORS, FONT_COLORS } from '@constants/colors';
 
 /**

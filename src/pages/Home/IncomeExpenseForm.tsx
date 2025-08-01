@@ -2,9 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { COLORS, COMMON_COLORS } from '@constants/colors';
-import { BackHeader } from '@components/Header';
-import { Button, ContentContainer } from '@components/index';
-import CategoryModal from '@components/modal/CategoryModal';
+import {
+  Button,
+  ContentContainer,
+  BackHeader,
+  CategoryModal,
+} from '@components/index';
 
 const IncomeExpenseForm = () => {
   const navigate = useNavigate();

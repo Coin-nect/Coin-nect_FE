@@ -8,8 +8,8 @@ import {
   ProfileInfo,
   ContentContainer,
   Message,
+  CheckModal,
 } from '@components/index';
-import CheckModal from '@components/modal/CheckModal';
 
 const MyPage = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
