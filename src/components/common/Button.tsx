@@ -85,8 +85,8 @@ const ButtonContainer = styled.button<{
     background-color: ${({ $bgColor }) => $bgColor || COLORS.gray};
     color: ${FONT_COLORS.white};
     border-radius: 0.5rem;
-    padding: 0.5rem 0;
-    font-size: 0.8rem;
+    padding: 0.6rem 0;
+    font-size: 0.9rem;
   }
 
   &.saveBtn {

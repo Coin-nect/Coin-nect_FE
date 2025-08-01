@@ -43,7 +43,7 @@ const Container = styled.div<{ $isWhite: boolean }>`
   padding: 1rem;
   border-bottom: ${({ $isWhite }) => ($isWhite ? '1px solid #d9d9d9' : 'none')};
   box-sizing: border-box;
-  margin-top: 3.7rem;
+  margin-top: 3.6rem;
 `;
 
 const Box = styled.div`

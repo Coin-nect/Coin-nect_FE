@@ -90,4 +90,5 @@ const NavItem = styled.div<{ $active: boolean }>`
   font-size: 0.5rem;
   font-weight: bold;
   gap: 5px;
+  cursor: pointer;
 `;
