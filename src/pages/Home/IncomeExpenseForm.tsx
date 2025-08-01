@@ -10,6 +10,7 @@ const IncomeExpenseForm = () => {
   const navigate = useNavigate();
   const [isIncome, setIsIncome] = useState(true);
   const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
   const [title, setTitle] = useState('');
@@ -29,14 +30,17 @@ const IncomeExpenseForm = () => {
   const handleSubmit = () => {
     if (
       date.trim() &&
+      time.trim() &&
       category.trim() &&
       amount.trim() &&
       title.trim() &&
       memo.trim()
     ) {
+      const combinedDateTime = `${date}T${time}:00`;
+
       console.log({
         type: isIncome ? '수입' : '지출',
-        date,
+        date: combinedDateTime,
         category,
         amount,
         title,
@@ -74,6 +78,14 @@ const IncomeExpenseForm = () => {
             type="date"
             value={date}
             onChange={e => setDate(e.target.value)}
+          />
+        </Form>
+        <Form>
+          <Label>시간</Label>
+          <Input
+            type="time"
+            value={time}
+            onChange={e => setTime(e.target.value)}
           />
         </Form>
         <Form>
@@ -204,7 +216,7 @@ const Textarea = styled.textarea.attrs({ spellCheck: false })`
   padding: 1rem;
   border: none;
   background-color: ${COLORS.input_box};
-  color: ${COLORS.dark_gray};
+  color: ${COLORS.black};
   border-radius: 0.8rem;
   resize: none;
   min-height: 100px;
