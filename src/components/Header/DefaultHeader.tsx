@@ -47,6 +47,7 @@ const Title = styled.div`
   color: ${FONT_COLORS.white};
   flex-grow: 1;
   text-align: center;
+  font-family: 'NanumHuman-ExtraBold';
 `;
 
 const IconWrapper = styled.div`

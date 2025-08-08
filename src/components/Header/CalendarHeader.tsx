@@ -191,6 +191,7 @@ const DateText = styled.div`
   text-align: center;
   margin: 0 8px;
   cursor: pointer;
+  font-family: 'NanumHuman-ExtraBold';
 `;
 
 const IconWrapper = styled.div`
