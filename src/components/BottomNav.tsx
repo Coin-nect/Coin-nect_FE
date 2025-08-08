@@ -88,7 +88,7 @@ const NavItem = styled.div<{ $active: boolean }>`
   color: ${props =>
     props.$active ? COMMON_COLORS.main : COMMON_COLORS.dark_gray};
   font-size: 0.5rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-Regular';
   gap: 5px;
   cursor: pointer;
 `;

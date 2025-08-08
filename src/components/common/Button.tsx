@@ -58,6 +58,7 @@ const ButtonContainer = styled.button<{
   align-items: center;
   border: none;
   cursor: pointer;
+  font-family: 'NanumHuman-Regular';
 
   &.default {
     background-color: ${COMMON_COLORS.main};

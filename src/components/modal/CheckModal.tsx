@@ -62,7 +62,7 @@ const Wrapper = styled.div`
 const Text = styled.p`
   color: ${FONT_COLORS.dark_blue};
   font-size: 1.2rem;
-  font-weight: 500;
+  font-family: 'NanumHuman-Bold';
   text-align: center;
 `;
 
