@@ -109,6 +109,7 @@ const LegendItem = styled.div<{ color: string }>`
   gap: 0.4rem;
   font-size: 0.9rem;
   color: ${COLORS.gray};
+  font-family: 'NanumHuman-ExtraLight';
 
   &::before {
     content: '';
@@ -141,6 +142,7 @@ const YAxisLabel = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  font-family: 'NanumHuman-ExtraLight';
 `;
 
 const YAxisSpacer = styled.div`
@@ -202,4 +204,5 @@ const Label = styled.div`
   color: ${COLORS.black};
   text-align: center;
   margin-top: 0.5rem;
+  font-family: 'NanumHuman-Regular';
 `;

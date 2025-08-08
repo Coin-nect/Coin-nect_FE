@@ -59,11 +59,11 @@ const LabelText = styled.div`
   font-size: 0.9rem;
   color: ${COLORS.black};
   margin-left: 1.2rem;
-  font-weight: 500;
+  font-family: 'NanumHuman-Regular';
 `;
 
 const AmountText = styled.div`
   font-size: 0.9rem;
-  font-weight: 500;
+  font-family: 'NanumHuman-Regular';
   color: ${COLORS.dark_blue};
 `;
