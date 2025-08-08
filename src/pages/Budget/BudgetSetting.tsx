@@ -99,7 +99,7 @@ const Section = styled.div`
 
 const Title = styled.h2`
   font-size: 1.2rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-Bold';
   margin-bottom: 1.5rem;
 `;
 
@@ -117,12 +117,12 @@ const Label = styled.p`
   font-size: 1rem;
   margin-bottom: 0.5rem;
   margin: 0;
-  font-weight: 600;
+  font-family: 'NanumHuman-Bold';
 `;
 
 const Amount = styled.p`
   font-size: 2rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-ExtraBold';
   margin: 0;
 `;
 
@@ -133,7 +133,7 @@ const AmountInput = styled.input`
   outline: none;
   color: #fff;
   font-size: 2rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-ExtraBold';
   text-align: center;
   margin-top: 0.5rem;
   &::placeholder {
@@ -148,4 +148,5 @@ const CheckboxLabel = styled.label`
   align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
+  font-family: 'NanumHuman-ExtraLight';
 `;
