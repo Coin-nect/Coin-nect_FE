@@ -30,7 +30,7 @@ const DayCell = ({
     <CellContainer
       $isNextMonth={isNextMonth}
       $isPrevMonth={isPrevMonth}
-      onClick={!isNextMonth && !isPrevMonth ? onClick : undefined}
+      onClick={onClick}
     >
       <DayCircle
         $isToday={isToday}
@@ -68,8 +68,7 @@ const CellContainer = styled.div<{
     $isNextMonth || $isPrevMonth ? '#F8F8F8' : 'transparent'};
   position: relative;
   box-sizing: border-box;
-  cursor: ${({ $isNextMonth, $isPrevMonth }) =>
-    $isNextMonth || $isPrevMonth ? 'default' : 'pointer'};
+  cursor: pointer;
 
   &:last-child {
     border-right: 1px solid #eee;

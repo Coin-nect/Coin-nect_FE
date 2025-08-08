@@ -16,9 +16,16 @@ interface CalendarProps {
   currentDate: Date;
   // eslint-disable-next-line no-unused-vars
   onSelectDate?: (selectedDay: DayData) => void;
+  // eslint-disable-next-line no-unused-vars
+  onChangeMonth?: (newDate: Date) => void;
 }
 
-const Calendar = ({ data = [], currentDate, onSelectDate }: CalendarProps) => {
+const Calendar = ({
+  data = [],
+  currentDate,
+  onSelectDate,
+  onChangeMonth,
+}: CalendarProps) => {
   const today = new Date();
   const todayDate = today.getDate();
 
@@ -80,8 +87,20 @@ const Calendar = ({ data = [], currentDate, onSelectDate }: CalendarProps) => {
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
 
   const handleSelect = (cell: DayData) => {
+    if (cell.isPrevMonth && onChangeMonth) {
+      const prevMonth = new Date(currentYear, currentMonth - 1, cell.date);
+      onChangeMonth(prevMonth);
+      return;
+    }
+
+    if (cell.isNextMonth && onChangeMonth) {
+      const nextMonth = new Date(currentYear, currentMonth + 1, cell.date);
+      onChangeMonth(nextMonth);
+      return;
+    }
+
     setSelectedDay(cell.date);
-    if (onSelectDate) onSelectDate(cell);
+    onSelectDate?.(cell);
   };
 
   return (
@@ -125,9 +144,7 @@ const Calendar = ({ data = [], currentDate, onSelectDate }: CalendarProps) => {
                 !cell.isPrevMonth
               }
               weekIndex={idx}
-              onClick={() =>
-                !cell.isNextMonth && !cell.isPrevMonth && handleSelect(cell)
-              }
+              onClick={() => handleSelect(cell)}
             />
           ))}
         </WeekRow>

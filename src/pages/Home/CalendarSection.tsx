@@ -1,24 +1,27 @@
-import { useState } from 'react';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { useState } from 'react';
 import { Calendar, DateSummary, TransactionItem } from '@components/index';
 import { COLORS } from '@constants/colors';
 import { transactionData, DayData } from '@constants/dummy';
 
 interface Dates {
   currentDate: Date;
+  // eslint-disable-next-line no-unused-vars
+  setCurrentDate: (date: Date) => void;
 }
 
-const CalendarSection = ({ currentDate }: Dates) => {
+const CalendarSection = ({ currentDate, setCurrentDate }: Dates) => {
   const navigate = useNavigate();
   const today = new Date().getDate();
   const [selectedDay, setSelectedDay] = useState<number | null>(today);
 
+  const yearMonthString = `${currentDate.getFullYear()}.${String(
+    currentDate.getMonth() + 1,
+  ).padStart(2, '0')}`;
+
   const selectedData: DayData | undefined = transactionData.find(
-    d =>
-      d.date === selectedDay &&
-      d.yearMonth ===
-        `${currentDate.getFullYear()}.${String(currentDate.getMonth() + 1).padStart(2, '0')}`,
+    d => d.date === selectedDay && d.yearMonth === yearMonthString,
   );
 
   const dateObj = new Date(
@@ -34,10 +37,14 @@ const CalendarSection = ({ currentDate }: Dates) => {
         data={transactionData}
         currentDate={currentDate}
         onSelectDate={day => setSelectedDay(day.date)}
+        onChangeMonth={(newDate: Date) => {
+          setCurrentDate(newDate);
+          setSelectedDay(newDate.getDate());
+        }}
       />
       <DateSummary
         date={selectedDay ?? 1}
-        yearMonth={`${currentDate.getFullYear()}.${String(currentDate.getMonth() + 1).padStart(2, '0')}`}
+        yearMonth={yearMonthString}
         dayOfWeek={weekDayText}
         income={selectedData?.income ?? 0}
         expense={selectedData?.expense ?? 0}

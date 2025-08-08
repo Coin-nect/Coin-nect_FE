@@ -60,7 +60,10 @@ const Home = () => {
         {isList ? (
           <ListSection currentDate={currentDate} />
         ) : (
-          <CalendarSection currentDate={currentDate} />
+          <CalendarSection
+            currentDate={currentDate}
+            setCurrentDate={setCurrentDate}
+          />
         )}
       </ContentContainer>
       <PlusBtn onClick={handlePlusClick} />
