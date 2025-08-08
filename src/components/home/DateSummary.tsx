@@ -64,6 +64,7 @@ const DateCircle = styled.div`
   align-items: center;
   font-size: 1.2rem;
   line-height: 1;
+  font-family: 'NanumHuman-Bold';
 `;
 
 const DateTextWrapper = styled.div`
@@ -75,18 +76,19 @@ const DateTextWrapper = styled.div`
 const YearMonthText = styled.div`
   font-size: 0.8rem;
   color: ${COMMON_COLORS.dark_blue};
-  font-weight: bold;
+  font-family: 'NanumHuman-Bold';
 `;
 
 const DayText = styled.div`
   font-size: 0.8rem;
   color: ${COMMON_COLORS.dark_blue};
+  font-family: 'NanumHuman-Light';
 `;
 
 const AmountContainer = styled.div`
   display: flex;
   gap: 0.8rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-Bold';
   font-size: 1rem;
 `;
 

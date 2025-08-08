@@ -68,4 +68,5 @@ const Container = styled.div`
 const Text = styled.div`
   font-size: 1rem;
   color: ${COLORS.white};
+  font-family: 'NanumHuman-Light';
 `;

@@ -31,7 +31,7 @@ const SummaryContainer = styled.div`
 
 const TotalText = styled.div`
   font-size: 1.2rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-Heavy';
   color: ${COLORS.dark_blue};
 `;
 
@@ -43,12 +43,12 @@ const Row = styled.div`
 
 const IncomeText = styled.div`
   font-size: 0.9rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-ExtraBold';
   color: ${COLORS.blue};
 `;
 
 const SpendingText = styled.div`
   font-size: 0.9rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-ExtraBold';
   color: ${COLORS.red};
 `;

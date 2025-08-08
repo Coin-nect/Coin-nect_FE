@@ -186,7 +186,6 @@ const DateContainer = styled.div`
 
 const DateText = styled.div`
   font-size: 1.2rem;
-  font-weight: bold;
   color: ${FONT_COLORS.white};
   text-align: center;
   margin: 0 8px;

@@ -160,4 +160,5 @@ const WeekDay = styled.div<{ $day: string }>`
         ? COLORS.blue
         : COLORS.dark_gray};
   font-size: 0.8rem;
+  font-family: 'NanumHuman-Light';
 `;

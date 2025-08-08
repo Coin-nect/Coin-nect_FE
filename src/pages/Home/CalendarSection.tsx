@@ -2,7 +2,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, DateSummary, TransactionItem } from '@components/index';
-import { GrMoney } from 'react-icons/gr';
 import { COLORS } from '@constants/colors';
 import { transactionData, DayData } from '@constants/dummy';
 
@@ -64,8 +63,7 @@ const CalendarSection = ({ currentDate }: Dates) => {
         </div>
       ) : (
         <EmptyContainer>
-          <GrMoney size={36} color={COLORS.gray} />
-          <EmptyText>데이터가 없습니다</EmptyText>
+          <EmptyText>NO DATA</EmptyText>
         </EmptyContainer>
       )}
     </Container>
@@ -84,13 +82,11 @@ const EmptyContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100px;
-  position: relative;
 `;
 
 const EmptyText = styled.div`
-  margin-top: 0.5rem;
+  margin: 0.5rem;
   color: ${COLORS.gray};
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-family: 'NanumHuman-ExtraLight';
 `;

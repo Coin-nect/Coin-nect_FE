@@ -51,7 +51,7 @@ const ItemContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 0.3rem 1rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
 `;
 
@@ -71,12 +71,14 @@ const TimeText = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'NanumHuman-Regular';
 `;
 
 const CategoryText = styled.div`
   color: ${COLORS.dark_gray};
   font-size: 0.8rem;
   margin-top: 2px;
+  font-family: 'NanumHuman-Regular';
 `;
 
 const TitleText = styled.div`
@@ -84,10 +86,11 @@ const TitleText = styled.div`
   margin-left: 2rem;
   font-size: 0.9rem;
   color: ${COLORS.dark_blue};
-  font-weight: 500;
+  font-family: 'NanumHuman-Regular';
 `;
 
 const AmountText = styled.div<{ $isIncome: boolean }>`
   font-size: 0.9rem;
   color: ${({ $isIncome }) => ($isIncome ? COLORS.blue : COLORS.red)};
+  font-family: 'NanumHuman-Regular';
 `;

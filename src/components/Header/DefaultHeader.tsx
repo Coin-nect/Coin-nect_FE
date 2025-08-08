@@ -43,7 +43,6 @@ const HeaderContainer = styled.header`
 
 const Title = styled.div`
   font-size: 1.2rem;
-  font-weight: bold;
   color: ${FONT_COLORS.white};
   flex-grow: 1;
   text-align: center;
