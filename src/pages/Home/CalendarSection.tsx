@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Calendar, DateSummary, TransactionItem } from '@components/index';
 import { COLORS } from '@constants/colors';
 import { transactionData, DayData } from '@constants/dummy';
@@ -13,37 +13,59 @@ interface Dates {
 
 const CalendarSection = ({ currentDate, setCurrentDate }: Dates) => {
   const navigate = useNavigate();
-  const today = new Date().getDate();
-  const [selectedDay, setSelectedDay] = useState<number | null>(today);
+  const today = new Date();
 
-  const yearMonthString = `${currentDate.getFullYear()}.${String(
-    currentDate.getMonth() + 1,
-  ).padStart(2, '0')}`;
+  const isSameMonthAsToday =
+    currentDate.getMonth() === today.getMonth() &&
+    currentDate.getFullYear() === today.getFullYear();
 
-  const selectedData: DayData | undefined = transactionData.find(
-    d => d.date === selectedDay && d.yearMonth === yearMonthString,
+  const [selectedDay, setSelectedDay] = useState<number>(
+    isSameMonthAsToday ? today.getDate() : 1,
   );
 
-  const dateObj = new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth(),
-    selectedDay ?? 1,
-  );
-  const weekDayText = dateObj.toLocaleDateString('ko-KR', { weekday: 'long' });
+  const yearMonthString = useMemo(() => {
+    return `${currentDate.getFullYear()}.${String(
+      currentDate.getMonth() + 1,
+    ).padStart(2, '0')}`;
+  }, [currentDate]);
+
+  const selectedData: DayData | undefined = useMemo(() => {
+    return transactionData.find(
+      d => d.date === selectedDay && d.yearMonth === yearMonthString,
+    );
+  }, [selectedDay, yearMonthString]);
+
+  const weekDayText = useMemo(() => {
+    const dateObj = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      selectedDay,
+    );
+    return dateObj.toLocaleDateString('ko-KR', { weekday: 'long' });
+  }, [currentDate, selectedDay]);
+
+  const filteredTransactionData = useMemo(() => {
+    return transactionData.filter(d => d.yearMonth === yearMonthString);
+  }, [yearMonthString]);
 
   return (
     <Container>
       <Calendar
-        data={transactionData}
+        data={filteredTransactionData}
         currentDate={currentDate}
         onSelectDate={day => setSelectedDay(day.date)}
         onChangeMonth={(newDate: Date) => {
           setCurrentDate(newDate);
-          setSelectedDay(newDate.getDate());
+
+          const isSameMonthAsToday =
+            newDate.getMonth() === today.getMonth() &&
+            newDate.getFullYear() === today.getFullYear();
+
+          setSelectedDay(isSameMonthAsToday ? today.getDate() : 1);
         }}
       />
       <DateSummary
-        date={selectedDay ?? 1}
+        date={selectedDay}
         yearMonth={yearMonthString}
         dayOfWeek={weekDayText}
         income={selectedData?.income ?? 0}
