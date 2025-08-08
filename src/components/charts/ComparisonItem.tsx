@@ -61,7 +61,7 @@ const Wrapper = styled.div`
 const Label = styled.div`
   font-size: 0.9rem;
   color: ${COLORS.black};
-  font-weight: 500;
+  font-family: 'NanumHuman-Regular';
   flex-shrink: 0;
 `;
 
@@ -75,8 +75,8 @@ const RightBox = styled.div`
 const Amount = styled.div`
   font-size: 0.9rem;
   color: ${COLORS.dark_blue};
-  font-weight: 500;
-  margin-bottom: 4px;
+  font-family: 'NanumHuman-Regular';
+  margin-bottom: 6px;
 `;
 
 const ColorBar = styled.div`

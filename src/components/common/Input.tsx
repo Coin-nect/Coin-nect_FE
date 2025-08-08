@@ -78,6 +78,7 @@ export const InputBox = styled.input`
     color: ${FONT_COLORS.dark_blue};
     padding: 1rem 1.5rem;
     border-radius: 2rem;
+    font-family: 'NanumHuman-Regular';
 
     &::placeholder {
       color: ${FONT_COLORS.placeholder};

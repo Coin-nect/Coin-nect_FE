@@ -57,8 +57,8 @@ const Title = styled.div`
   display: flex;
   text-align: center;
   font-size: 1.2rem;
-  font-weight: bold;
   color: ${COMMON_COLORS.main};
+  font-family: 'NanumHuman-ExtraBold';
 `;
 
 const BackIcon = styled(IoArrowBackOutline)`

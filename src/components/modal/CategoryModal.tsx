@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Modal from '@components/common/Modal';
+import { Modal } from '@components/index';
 import { COLORS, COMMON_COLORS } from '@constants/colors';
 import { categories } from '@constants/categories';
 
@@ -41,15 +41,15 @@ const ModalContent = styled.div`
 `;
 
 const Title = styled.h3`
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-ExtraBold';
 `;
 
 const CategoryList = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
   max-height: 400px;
   overflow-y: auto;
 
@@ -78,7 +78,8 @@ const IconCircle = styled.div`
 
 const Label = styled.div`
   margin-top: 0.3rem;
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   text-align: center;
   color: ${COLORS.dark_blue};
+  font-family: 'NanumHuman-Light';
 `;

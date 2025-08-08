@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import Modal from '@components/common/Modal';
-import Button from '@components/common/Button';
+import { Modal, Button } from '@components/index';
 import { COMMON_COLORS, FONT_COLORS } from '@constants/colors';
 
 /**
@@ -15,7 +14,7 @@ interface CheckModalProps {
   onSubmit: () => void;
   closeModal: () => void;
   isVisible: boolean;
-  type: 'delete' | 'logout' | 'withdrawal';
+  type: 'delete' | 'logout' | 'withdrawal' | 'removebudget';
 }
 
 function CheckModal({
@@ -28,6 +27,7 @@ function CheckModal({
     delete: { prefix: '내역을 삭제' },
     logout: { prefix: '로그아웃' },
     withdrawal: { prefix: '회원을 탈퇴' },
+    removebudget: { prefix: '기존 예산 설정을<br />삭제' },
   };
 
   const prefix = messages[type]?.prefix || 'prefix';
@@ -35,7 +35,7 @@ function CheckModal({
   return (
     <Modal isVisible={isVisible} onClose={closeModal}>
       <Wrapper>
-        <Text>{prefix} 하시겠습니까?</Text>
+        <Text dangerouslySetInnerHTML={{ __html: `${prefix} 하시겠습니까?` }} />
         <BtnWrapper>
           <Button
             type="modalBtn"
@@ -62,7 +62,8 @@ const Wrapper = styled.div`
 const Text = styled.p`
   color: ${FONT_COLORS.dark_blue};
   font-size: 1.2rem;
-  font-weight: 500;
+  font-family: 'NanumHuman-Bold';
+  text-align: center;
 `;
 
 const BtnWrapper = styled.div`

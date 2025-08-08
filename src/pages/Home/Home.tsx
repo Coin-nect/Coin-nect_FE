@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { CalendarHeader, BottomNav } from '@components/index';
+import {
+  CalendarHeader,
+  BottomNav,
+  Message,
+  PlusBtn,
+  TotalSummary,
+} from '@components/index';
 import CalendarSection from './CalendarSection';
-import TotalSummary from '@components/home/TotalSummary';
-import PlusBtn from '@components/home/PlusBtn';
 import ListSection from './ListSection';
-import Message from '@components/common/Message';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -57,7 +60,10 @@ const Home = () => {
         {isList ? (
           <ListSection currentDate={currentDate} />
         ) : (
-          <CalendarSection currentDate={currentDate} />
+          <CalendarSection
+            currentDate={currentDate}
+            setCurrentDate={setCurrentDate}
+          />
         )}
       </ContentContainer>
       <PlusBtn onClick={handlePlusClick} />

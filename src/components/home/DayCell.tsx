@@ -30,7 +30,7 @@ const DayCell = ({
     <CellContainer
       $isNextMonth={isNextMonth}
       $isPrevMonth={isPrevMonth}
-      onClick={!isNextMonth && !isPrevMonth ? onClick : undefined}
+      onClick={onClick}
     >
       <DayCircle
         $isToday={isToday}
@@ -68,8 +68,7 @@ const CellContainer = styled.div<{
     $isNextMonth || $isPrevMonth ? '#F8F8F8' : 'transparent'};
   position: relative;
   box-sizing: border-box;
-  cursor: ${({ $isNextMonth, $isPrevMonth }) =>
-    $isNextMonth || $isPrevMonth ? 'default' : 'pointer'};
+  cursor: pointer;
 
   &:last-child {
     border-right: 1px solid #eee;
@@ -98,13 +97,14 @@ const DayCircle = styled.div<{
   border: ${({ $isTodayAndNotSelected }) =>
     $isTodayAndNotSelected ? `1px solid ${COMMON_COLORS.main}` : 'none'};
   border-radius: 0.2rem;
-  width: 22px;
+  width: 24px;
   height: 20px;
   line-height: 22px;
   font-size: 0.8rem;
-  margin-top: 2px;
-  margin-left: 2px;
+  margin-top: 3px;
+  margin-left: 3px;
   box-sizing: border-box;
+  font-family: 'NanumHuman-Light';
 `;
 
 const AmountWrapper = styled.div`
@@ -123,9 +123,11 @@ const AmountWrapper = styled.div`
 const IncomeText = styled.div`
   font-size: 0.6rem;
   color: ${COLORS.blue};
+  font-family: 'NanumHuman-Light';
 `;
 
 const ExpenseText = styled.div`
   font-size: 0.6rem;
   color: ${COLORS.red};
+  font-family: 'NanumHuman-Light';
 `;

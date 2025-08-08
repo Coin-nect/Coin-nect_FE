@@ -43,7 +43,7 @@ const Container = styled.div<{ $isWhite: boolean }>`
   padding: 1rem;
   border-bottom: ${({ $isWhite }) => ($isWhite ? '1px solid #d9d9d9' : 'none')};
   box-sizing: border-box;
-  margin-top: 3.7rem;
+  margin-top: 3rem;
 `;
 
 const Box = styled.div`
@@ -55,13 +55,13 @@ const Box = styled.div`
 
 const Label = styled.div<{ color: string }>`
   font-size: 0.8rem;
-  font-weight: 500;
+  font-family: 'NanumHuman-Regular';
   color: ${({ color }) => color};
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
 `;
 
 const Amount = styled.div<{ color: string }>`
   font-size: 1.2rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-ExtraBold';
   color: ${({ color }) => color};
 `;

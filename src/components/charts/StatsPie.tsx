@@ -70,6 +70,6 @@ const CenterLabel = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-Heavy';
   color: ${COLORS.dark_blue};
 `;

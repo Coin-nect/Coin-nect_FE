@@ -106,14 +106,14 @@ const Text = styled.p`
   font-size: 1.2rem;
   margin-bottom: 0.2rem;
   margin: 0;
-  font-weight: 500;
+  font-family: 'NanumHuman-Regular';
 `;
 
 const PlaceholderText = styled.p`
   font-size: 1rem;
   color: #fff;
   text-align: left;
-  font-weight: 500;
+  font-family: 'NanumHuman-Light';
   margin: 0 2rem;
 `;
 
@@ -121,6 +121,6 @@ const GraphLabel = styled.p`
   width: 100%;
   margin: 0;
   font-size: 1rem;
-  font-weight: 700;
+  font-family: 'NanumHuman-Bold';
   text-align: left;
 `;

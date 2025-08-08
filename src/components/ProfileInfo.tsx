@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '@constants/colors';
-import { BlurBox } from './common';
-import ProfileImage from './ProfileImage';
+import { BlurBox, ProfileImage } from '@components/index';
 
 interface ProfileProps {
   user_image: string;
@@ -56,7 +55,7 @@ const NameText = styled.div`
   font-size: 1.2rem;
   color: ${COLORS.white};
   text-align: center;
-  font-weight: bold;
+  font-family: 'NanumHuman-ExtraBold';
   margin-top: 1.6rem;
   margin-bottom: 1rem;
 `;
@@ -66,4 +65,5 @@ const Text = styled.div`
   color: ${COLORS.white};
   margin-bottom: 0.4rem;
   margin-left: 3rem;
+  font-family: 'NanumHuman-Regular';
 `;

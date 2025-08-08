@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import SearchHeader from '@components/Header/SearchHeader';
-import DateSummary from '@components/home/DateSummary';
-import TransactionItem from '@components/home/TransactionItem';
+import { SearchHeader, DateSummary, TransactionItem } from '@components/index';
 import { transactionData, DayData } from '@constants/dummy';
 import { COLORS } from '@constants/colors';
 

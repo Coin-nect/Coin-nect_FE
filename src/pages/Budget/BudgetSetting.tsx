@@ -1,12 +1,25 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { BackHeader, Button, ContentContainer } from '@components/index';
+import {
+  BackHeader,
+  Button,
+  ContentContainer,
+  CheckModal,
+} from '@components/index';
 import { COLORS, COMMON_COLORS } from '@constants/colors';
 
 const BudgetSetting = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState('');
+  const [amount, setAmount] = useState('₩ 1,500,000');
+  const [showRemoveBudgetModal, setShowRemoveBudgetModal] = useState(false);
+
+  const handleRemoveBudget = () => {
+    console.log('기존 예산 삭제');
+    setAmount('₩ 0');
+    setShowRemoveBudgetModal(false);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value.replace(/[^0-9]/g, '');
@@ -22,14 +35,18 @@ const BudgetSetting = () => {
 
   return (
     <Container>
-      <BackHeader title="예산 설정" showIcon={false} />
+      <BackHeader
+        title="예산 설정"
+        showIcon={true}
+        onClick={() => setShowRemoveBudgetModal(true)}
+      />
       <ContentContainer>
         <Section>
           <Title>00월 예산을 재설정하시겠어요?</Title>
         </Section>
         <BudgetBox $bgColor={COLORS.input_box} $textColor="#000">
           <Label>기존 예산</Label>
-          <Amount>₩ 1,500,000</Amount>
+          <Amount>{amount}</Amount>
         </BudgetBox>
 
         <BudgetBox $bgColor="#343A40" $textColor="#fff">
@@ -57,6 +74,12 @@ const BudgetSetting = () => {
           onClick={handleSubmit}
         />
       </ContentContainer>
+      <CheckModal
+        isVisible={showRemoveBudgetModal}
+        closeModal={() => setShowRemoveBudgetModal(false)}
+        onSubmit={handleRemoveBudget}
+        type="removebudget"
+      />
     </Container>
   );
 };
@@ -76,7 +99,7 @@ const Section = styled.div`
 
 const Title = styled.h2`
   font-size: 1.2rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-Bold';
   margin-bottom: 1.5rem;
 `;
 
@@ -94,12 +117,12 @@ const Label = styled.p`
   font-size: 1rem;
   margin-bottom: 0.5rem;
   margin: 0;
-  font-weight: 600;
+  font-family: 'NanumHuman-Bold';
 `;
 
 const Amount = styled.p`
   font-size: 2rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-ExtraBold';
   margin: 0;
 `;
 
@@ -110,7 +133,7 @@ const AmountInput = styled.input`
   outline: none;
   color: #fff;
   font-size: 2rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-ExtraBold';
   text-align: center;
   margin-top: 0.5rem;
   &::placeholder {
@@ -125,4 +148,5 @@ const CheckboxLabel = styled.label`
   align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
+  font-family: 'NanumHuman-ExtraLight';
 `;

@@ -6,7 +6,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { FaList } from 'react-icons/fa6';
 import { IoCalendarNumber, IoSearch } from 'react-icons/io5';
 import { BsBarChartFill } from 'react-icons/bs';
-import CustomDatePicker from '@components/CustomDatePicker';
+import { CustomDatePicker } from '@components/index';
 
 type PickerMode = 'year' | 'month' | 'range';
 type PickerType = 'home' | 'stats';
@@ -186,11 +186,11 @@ const DateContainer = styled.div`
 
 const DateText = styled.div`
   font-size: 1.2rem;
-  font-weight: bold;
   color: ${FONT_COLORS.white};
   text-align: center;
   margin: 0 8px;
   cursor: pointer;
+  font-family: 'NanumHuman-ExtraBold';
 `;
 
 const IconWrapper = styled.div`

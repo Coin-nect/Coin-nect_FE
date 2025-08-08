@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '@constants/colors';
 import DayCell from './DayCell';
@@ -16,16 +16,34 @@ interface CalendarProps {
   currentDate: Date;
   // eslint-disable-next-line no-unused-vars
   onSelectDate?: (selectedDay: DayData) => void;
+  // eslint-disable-next-line no-unused-vars
+  onChangeMonth?: (newDate: Date) => void;
 }
 
-const Calendar = ({ data = [], currentDate, onSelectDate }: CalendarProps) => {
+const Calendar = ({
+  data = [],
+  currentDate,
+  onSelectDate,
+  onChangeMonth,
+}: CalendarProps) => {
   const today = new Date();
+  const todayYear = today.getFullYear();
+  const todayMonth = today.getMonth();
   const todayDate = today.getDate();
 
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth();
 
-  const [selectedDay, setSelectedDay] = useState<number | null>(null);
+  const isSameMonthAsToday =
+    todayYear === currentYear && todayMonth === currentMonth;
+
+  const [selectedDay, setSelectedDay] = useState<number>(() =>
+    isSameMonthAsToday ? todayDate : 1,
+  );
+
+  useEffect(() => {
+    setSelectedDay(isSameMonthAsToday ? todayDate : 1);
+  }, [currentYear, currentMonth]);
 
   const firstDay = new Date(currentYear, currentMonth, 1);
   const lastDay = new Date(currentYear, currentMonth + 1, 0);
@@ -80,8 +98,20 @@ const Calendar = ({ data = [], currentDate, onSelectDate }: CalendarProps) => {
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
 
   const handleSelect = (cell: DayData) => {
+    if (cell.isPrevMonth && onChangeMonth) {
+      const prevMonth = new Date(currentYear, currentMonth - 1, 1);
+      onChangeMonth(prevMonth);
+      return;
+    }
+
+    if (cell.isNextMonth && onChangeMonth) {
+      const nextMonth = new Date(currentYear, currentMonth + 1, 1);
+      onChangeMonth(nextMonth);
+      return;
+    }
+
     setSelectedDay(cell.date);
-    if (onSelectDate) onSelectDate(cell);
+    onSelectDate?.(cell);
   };
 
   return (
@@ -95,41 +125,36 @@ const Calendar = ({ data = [], currentDate, onSelectDate }: CalendarProps) => {
       </WeekRow>
       {rows.map((week, i) => (
         <WeekRow key={i}>
-          {week.map((cell, idx) => (
-            <DayCell
-              key={idx}
-              day={cell.date}
-              income={cell.income}
-              expense={cell.expense}
-              isNextMonth={cell.isNextMonth}
-              isPrevMonth={cell.isPrevMonth}
-              isToday={
-                cell.date === todayDate &&
-                !cell.isNextMonth &&
-                !cell.isPrevMonth
-              }
-              isSelected={
-                selectedDay === null
-                  ? cell.date === todayDate &&
-                    !cell.isNextMonth &&
-                    !cell.isPrevMonth
-                  : selectedDay === cell.date &&
-                    !cell.isNextMonth &&
-                    !cell.isPrevMonth
-              }
-              isTodayAndNotSelected={
-                selectedDay !== null &&
-                cell.date === todayDate &&
-                selectedDay !== cell.date &&
-                !cell.isNextMonth &&
-                !cell.isPrevMonth
-              }
-              weekIndex={idx}
-              onClick={() =>
-                !cell.isNextMonth && !cell.isPrevMonth && handleSelect(cell)
-              }
-            />
-          ))}
+          {week.map((cell, idx) => {
+            const isToday =
+              isSameMonthAsToday &&
+              cell.date === todayDate &&
+              !cell.isPrevMonth &&
+              !cell.isNextMonth;
+
+            const isSelected =
+              selectedDay === cell.date &&
+              !cell.isPrevMonth &&
+              !cell.isNextMonth;
+
+            const isTodayAndNotSelected = isToday && selectedDay !== todayDate;
+
+            return (
+              <DayCell
+                key={idx}
+                day={cell.date}
+                income={cell.income}
+                expense={cell.expense}
+                isNextMonth={cell.isNextMonth}
+                isPrevMonth={cell.isPrevMonth}
+                isToday={isToday}
+                isSelected={isSelected}
+                isTodayAndNotSelected={isTodayAndNotSelected}
+                weekIndex={idx}
+                onClick={() => handleSelect(cell)}
+              />
+            );
+          })}
         </WeekRow>
       ))}
     </CalendarContainer>
@@ -160,4 +185,5 @@ const WeekDay = styled.div<{ $day: string }>`
         ? COLORS.blue
         : COLORS.dark_gray};
   font-size: 0.8rem;
+  font-family: 'NanumHuman-Light';
 `;

@@ -2,10 +2,12 @@ import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { COLORS } from '@constants/colors';
-import { BackHeader } from '@components/Header';
-import { ContentContainer } from '@components/index';
-import MenuModal from '@components/modal/MenuModal';
-import CheckModal from '@components/modal/CheckModal';
+import {
+  ContentContainer,
+  BackHeader,
+  MenuModal,
+  CheckModal,
+} from '@components/index';
 import { getDayOfWeek } from '@utils/dayofweek';
 
 const ViewIncomeExpense = () => {

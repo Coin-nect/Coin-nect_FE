@@ -1,44 +1,72 @@
-import { useState } from 'react';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Calendar, DateSummary, TransactionItem } from '@components/home/index';
-import { GrMoney } from 'react-icons/gr';
+import styled from 'styled-components';
+import { useState, useMemo } from 'react';
+import { Calendar, DateSummary, TransactionItem } from '@components/index';
 import { COLORS } from '@constants/colors';
 import { transactionData, DayData } from '@constants/dummy';
 
 interface Dates {
   currentDate: Date;
+  // eslint-disable-next-line no-unused-vars
+  setCurrentDate: (date: Date) => void;
 }
 
-const CalendarSection = ({ currentDate }: Dates) => {
+const CalendarSection = ({ currentDate, setCurrentDate }: Dates) => {
   const navigate = useNavigate();
-  const today = new Date().getDate();
-  const [selectedDay, setSelectedDay] = useState<number | null>(today);
+  const today = new Date();
 
-  const selectedData: DayData | undefined = transactionData.find(
-    d =>
-      d.date === selectedDay &&
-      d.yearMonth ===
-        `${currentDate.getFullYear()}.${String(currentDate.getMonth() + 1).padStart(2, '0')}`,
+  const isSameMonthAsToday =
+    currentDate.getMonth() === today.getMonth() &&
+    currentDate.getFullYear() === today.getFullYear();
+
+  const [selectedDay, setSelectedDay] = useState<number>(
+    isSameMonthAsToday ? today.getDate() : 1,
   );
 
-  const dateObj = new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth(),
-    selectedDay ?? 1,
-  );
-  const weekDayText = dateObj.toLocaleDateString('ko-KR', { weekday: 'long' });
+  const yearMonthString = useMemo(() => {
+    return `${currentDate.getFullYear()}.${String(
+      currentDate.getMonth() + 1,
+    ).padStart(2, '0')}`;
+  }, [currentDate]);
+
+  const selectedData: DayData | undefined = useMemo(() => {
+    return transactionData.find(
+      d => d.date === selectedDay && d.yearMonth === yearMonthString,
+    );
+  }, [selectedDay, yearMonthString]);
+
+  const weekDayText = useMemo(() => {
+    const dateObj = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      selectedDay,
+    );
+    return dateObj.toLocaleDateString('ko-KR', { weekday: 'long' });
+  }, [currentDate, selectedDay]);
+
+  const filteredTransactionData = useMemo(() => {
+    return transactionData.filter(d => d.yearMonth === yearMonthString);
+  }, [yearMonthString]);
 
   return (
     <Container>
       <Calendar
-        data={transactionData}
+        data={filteredTransactionData}
         currentDate={currentDate}
         onSelectDate={day => setSelectedDay(day.date)}
+        onChangeMonth={(newDate: Date) => {
+          setCurrentDate(newDate);
+
+          const isSameMonthAsToday =
+            newDate.getMonth() === today.getMonth() &&
+            newDate.getFullYear() === today.getFullYear();
+
+          setSelectedDay(isSameMonthAsToday ? today.getDate() : 1);
+        }}
       />
       <DateSummary
-        date={selectedDay ?? 1}
-        yearMonth={`${currentDate.getFullYear()}.${String(currentDate.getMonth() + 1).padStart(2, '0')}`}
+        date={selectedDay}
+        yearMonth={yearMonthString}
         dayOfWeek={weekDayText}
         income={selectedData?.income ?? 0}
         expense={selectedData?.expense ?? 0}
@@ -64,8 +92,7 @@ const CalendarSection = ({ currentDate }: Dates) => {
         </div>
       ) : (
         <EmptyContainer>
-          <GrMoney size={36} color={COLORS.gray} />
-          <EmptyText>데이터가 없습니다</EmptyText>
+          <EmptyText>NO DATA</EmptyText>
         </EmptyContainer>
       )}
     </Container>
@@ -84,13 +111,11 @@ const EmptyContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100px;
-  position: relative;
 `;
 
 const EmptyText = styled.div`
-  margin-top: 0.5rem;
+  margin: 0.5rem;
   color: ${COLORS.gray};
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-family: 'NanumHuman-ExtraLight';
 `;

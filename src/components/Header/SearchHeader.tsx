@@ -66,20 +66,21 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   background-color: ${COLORS.white};
   border-bottom: 1.5px solid ${COMMON_COLORS.main};
   box-sizing: border-box;
 `;
 
 const Input = styled.input`
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: ${FONT_COLORS.dark_blue};
   border: 1.5px solid ${COMMON_COLORS.main};
   border-radius: 0.5rem;
   flex-grow: 1;
   margin: 0 0.5rem;
   padding: 0.7rem;
+  font-family: 'NanumHuman-Light';
 
   &:focus {
     outline: none;

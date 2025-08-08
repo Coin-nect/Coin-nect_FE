@@ -18,7 +18,7 @@ import {
   Analysis,
   AnalysisDetail,
 } from '@pages/index';
-import ScrollToTop from '@components/ScrollToTop';
+import { ScrollToTop } from '@components/index';
 
 const App = () => (
   <Router>

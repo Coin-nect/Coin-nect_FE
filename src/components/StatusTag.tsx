@@ -18,5 +18,5 @@ const Tag = styled.span<{ color: string }>`
   color: #000;
   border-radius: 3rem;
   margin-left: 0.5rem;
-  font-weight: 500;
+  font-family: 'NanumHuman-Bold';
 `;

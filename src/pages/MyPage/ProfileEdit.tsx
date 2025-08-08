@@ -120,7 +120,7 @@ const ProfileEdit = () => {
           value={formData.name_e.value}
           inputType="text"
           onChange={e => handleInputChange(e, 'name_e')}
-          style={{ marginTop: '1rem' }}
+          style={{ marginTop: '0.5rem' }}
         />
         {formData.name_e.error && (
           <ErrorText>{formData.name_e.error}</ErrorText>
@@ -131,7 +131,7 @@ const ProfileEdit = () => {
           value={formData.gender.value}
           inputType="text"
           onChange={e => handleInputChange(e, 'gender')}
-          style={{ marginTop: '1rem' }}
+          style={{ marginTop: '0.5rem' }}
         />
         {formData.gender.error && (
           <ErrorText>{formData.gender.error}</ErrorText>
@@ -142,7 +142,7 @@ const ProfileEdit = () => {
           value={formData.age.value}
           inputType="number"
           onChange={e => handleInputChange(e, 'age')}
-          style={{ marginTop: '1rem' }}
+          style={{ marginTop: '0.5rem' }}
         />
         {formData.age.error && <ErrorText>{formData.age.error}</ErrorText>}
         <Input
@@ -151,13 +151,13 @@ const ProfileEdit = () => {
           value={formData.job.value}
           inputType="text"
           onChange={e => handleInputChange(e, 'job')}
-          style={{ marginTop: '1rem' }}
+          style={{ marginTop: '0.5rem' }}
         />
         {formData.job.error && <ErrorText>{formData.job.error}</ErrorText>}
         <Button
           buttonText="저장하기"
           type="saveBtn"
-          style={{ marginTop: '5rem' }}
+          style={{ marginTop: '3rem' }}
           bgColor={COMMON_COLORS.yellow}
           txtColor={COLORS.black}
           onClick={handleSubmit}

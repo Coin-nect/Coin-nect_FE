@@ -83,11 +83,11 @@ const Section = styled.div`
 const Title = styled.p`
   font-size: 1.2rem;
   margin: 0;
-  font-weight: bold;
+  font-family: 'NanumHuman-ExtraBold';
 `;
 
 const SectionTitle = styled.div`
-  font-weight: bold;
+  font-family: 'NanumHuman-ExtraBold';
   margin: 2rem 0 0 0;
   font-size: 1rem;
 `;
@@ -99,6 +99,6 @@ const ToggleButton = styled.button`
   background-color: ${COLORS.gray};
   color: ${COLORS.white};
   border: none;
-  font-weight: bold;
+  font-family: 'NanumHuman-Bold';
   cursor: pointer;
 `;

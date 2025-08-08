@@ -160,6 +160,7 @@ const StyledInput = styled.input`
   box-sizing: border-box;
   font-weight: bold;
   outline: none;
+  font-family: 'NanumHuman-ExtraBold';
 `;
 
 const PickerArea = styled.div`

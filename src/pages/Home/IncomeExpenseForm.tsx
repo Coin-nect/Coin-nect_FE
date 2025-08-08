@@ -2,14 +2,22 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { COLORS, COMMON_COLORS } from '@constants/colors';
-import { BackHeader } from '@components/Header';
-import { Button, ContentContainer } from '@components/index';
-import CategoryModal from '@components/modal/CategoryModal';
+import {
+  Button,
+  ContentContainer,
+  BackHeader,
+  CategoryModal,
+} from '@components/index';
+import DatePicker from 'react-datepicker';
+import { ko } from 'date-fns/locale';
+import dayjs from 'dayjs';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const IncomeExpenseForm = () => {
   const navigate = useNavigate();
   const [isIncome, setIsIncome] = useState(true);
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState<Date | null>(new Date());
+  const [time, setTime] = useState<Date | null>(new Date());
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
   const [title, setTitle] = useState('');
@@ -28,17 +36,20 @@ const IncomeExpenseForm = () => {
 
   const handleSubmit = () => {
     if (
-      date.trim() &&
+      date &&
+      time &&
       category.trim() &&
       amount.trim() &&
       title.trim() &&
       memo.trim()
     ) {
+      const combinedDateTime = `${dayjs(date).format('YYYY-MM-DD')}T${dayjs(time).format('HH:mm')}:00`;
+      const numericAmount = amount.replace(/[^0-9]/g, '');
       console.log({
         type: isIncome ? '수입' : '지출',
-        date,
+        date: combinedDateTime,
         category,
-        amount,
+        amount: numericAmount,
         title,
         memo,
       });
@@ -70,11 +81,31 @@ const IncomeExpenseForm = () => {
         </ButtonGroup>
         <Form>
           <Label>날짜</Label>
-          <Input
-            type="date"
-            value={date}
-            onChange={e => setDate(e.target.value)}
-          />
+          <DateInputWrapper>
+            <DatePicker
+              selected={date}
+              onChange={newDate => setDate(newDate)}
+              dateFormat="yyyy-MM-dd"
+              locale={ko}
+              customInput={<Input />}
+              maxDate={new Date()}
+            />
+          </DateInputWrapper>
+        </Form>
+        <Form>
+          <Label>시간</Label>
+          <DateInputWrapper>
+            <DatePicker
+              selected={time}
+              onChange={(val: Date | null) => val && setTime(val)}
+              showTimeSelect
+              showTimeSelectOnly
+              timeIntervals={1}
+              dateFormat="HH:mm"
+              customInput={<Input />}
+              locale={ko}
+            />
+          </DateInputWrapper>
         </Form>
         <Form>
           <Label>분류</Label>
@@ -163,7 +194,7 @@ const TypeButton = styled.button<{
   color: ${({ $active, $colorType }) =>
     $active ? ($colorType === 'blue' ? COLORS.blue : COLORS.red) : COLORS.gray};
   border-radius: 0.8rem;
-  font-weight: bold;
+  font-family: 'NanumHuman-ExtraBold';
   font-size: 1rem;
   cursor: pointer;
 `;
@@ -172,7 +203,7 @@ const Form = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.5rem;
   box-sizing: border-box;
   margin-bottom: 0.5rem;
 `;
@@ -181,6 +212,7 @@ const Label = styled.label`
   font-size: 1rem;
   color: ${COLORS.dark_blue};
   width: 80px;
+  font-family: 'NanumHuman-Regular';
 `;
 
 const Input = styled.input`
@@ -191,6 +223,27 @@ const Input = styled.input`
   outline: none;
   font-size: 0.9rem;
   background-color: transparent;
+  font-family: 'NanumHuman-Light';
+  box-sizing: border-box;
+`;
+
+const DateInputWrapper = styled.div`
+  width: 100%;
+  flex: 1;
+  display: flex;
+  margin-left: -1.2rem;
+
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+
+  .react-datepicker__input-container {
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
 `;
 
 const Memo = styled.div`
@@ -204,10 +257,11 @@ const Textarea = styled.textarea.attrs({ spellCheck: false })`
   padding: 1rem;
   border: none;
   background-color: ${COLORS.input_box};
-  color: ${COLORS.dark_gray};
+  color: ${COLORS.black};
   border-radius: 0.8rem;
   resize: none;
   min-height: 100px;
   font-size: 0.9rem;
   outline: none;
+  font-family: 'NanumHuman-Light';
 `;

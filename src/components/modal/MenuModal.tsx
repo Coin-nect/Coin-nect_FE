@@ -68,6 +68,7 @@ const MenuItem = styled.div`
   align-items: center;
   cursor: pointer;
   font-size: 0.9rem;
+  font-family: 'NanumHuman-Light';
 `;
 
 const Divider = styled.div`

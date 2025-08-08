@@ -21,7 +21,7 @@ const CustomCursor = (props: any) => {
   const { points } = props;
   const { x } = points[0];
   return (
-    <line x1={x} y1={0} x2={x} y2={120} stroke={COLORS.gray} strokeWidth={1} />
+    <line x1={x} y1={0} x2={x} y2={90} stroke={COLORS.gray} strokeWidth={1} />
   );
 };
 
